@@ -5,10 +5,14 @@ import { useSearchStore } from "../../store/useSearchStore";
 import UserBarSkeleton from "../skeletons/UserBarSkeleton";
 
 const SearchSidebar = () => {
-
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const { getSearchUsers, searchLoading, searchedUsers, getSearchSelectedUser } = useSearchStore();
+  const {
+    getSearchUsers,
+    searchLoading,
+    searchedUsers,
+    getSearchSelectedUser,
+  } = useSearchStore();
 
   useEffect(() => {
     if (searchQuery === "") return;
@@ -19,7 +23,7 @@ const SearchSidebar = () => {
     return () => clearTimeout(timer);
   }, [searchQuery, getSearchUsers]);
 
-  const handleUserTabClick = async (userId,e) => {
+  const handleUserTabClick = async (userId, e) => {
     e.preventDefault();
     e.stopPropagation();
     await getSearchSelectedUser(userId, navigate);
@@ -49,28 +53,30 @@ const SearchSidebar = () => {
         ) : searchedUsers && searchedUsers.length > 0 ? (
           searchedUsers.map((user) => (
             <button
-               key={user._id}
-               onClick={(e) => handleUserTabClick(user._id, e)}
-               className={` w-full p-2 flex gap-3 items-center
+              key={user._id}
+              onClick={(e) => handleUserTabClick(user._id, e)}
+              className={` w-full p-2 flex gap-3 items-center
                hover:bg-base-300 transition-colors border-b border-base-300`}
-             >
-               <div className="relative w-2/12">
-                 <img
-                   src={user.profilePic || "/user_avatar.jpg"}
-                   alt={user.name}
-                   className="size-10 object-cover rounded-full"
-                 />
-               </div>
-         
-               <div className="w-10/12">
-                 <div className="flex justify-between">
-                   <p className="font-medium truncate">{user.fullName}</p>
-                 </div>
-                 <div className="text-sm flex">
-                   <p className="font-normal truncate text-stone-500">{user.userName}</p>
-                 </div>
-               </div>
-             </button>
+            >
+              <div className="relative w-2/12">
+                <img
+                  src={user.profilePic || "/user_avatar.jpg"}
+                  alt={user.name}
+                  className="size-10 object-cover rounded-full"
+                />
+              </div>
+
+              <div className="w-10/12">
+                <div className="flex justify-between">
+                  <p className="font-medium truncate">{user.fullName}</p>
+                </div>
+                <div className="text-sm flex">
+                  <p className="font-normal truncate text-stone-500">
+                    {user.userName}
+                  </p>
+                </div>
+              </div>
+            </button>
           ))
         ) : (
           <div className="text-center text-zinc-500 py-4">

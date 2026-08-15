@@ -8,7 +8,6 @@ import GeminiButton from "../components/Buttons/GeminiButton";
 import { handleGenerateCaptions } from "../utils/createPageMethods";
 
 const Gemini = ({ isPost }) => {
-  
   const searchText = useRef(null);
   const countdownIntervalRef = useRef(null);
   const [cooldownRemaining, setCooldownRemaining] = useState(0);
@@ -35,7 +34,7 @@ const Gemini = ({ isPost }) => {
 
     if (lastRequestTime) {
       const remaining = Math.floor(
-        (lastRequestTime + 180000 - Date.now()) / 1000
+        (lastRequestTime + 180000 - Date.now()) / 1000,
       );
       if (remaining > 0) startCooldown(remaining);
     }
@@ -73,7 +72,7 @@ const Gemini = ({ isPost }) => {
             setGeminiCaptions,
             incrementRequestCount,
             setLastRequestTime,
-            startCooldown
+            startCooldown,
           )
         }
         className="w-full space-y-4 mt-2"

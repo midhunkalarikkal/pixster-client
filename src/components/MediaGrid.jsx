@@ -21,9 +21,9 @@ const MediaGrid = () => {
       }
     };
 
-    fetchPosts()
+    fetchPosts();
   }, [fetchMediaGrid]);
-  
+
   return (
     <div className="md:w-8/12 h-full hidden md:flex justify-center">
       <div className="w-full lg:w-10/12 items-center justify-center bg-base-100/50 overflow-y-scroll no-scrollbar px-4 py-8">

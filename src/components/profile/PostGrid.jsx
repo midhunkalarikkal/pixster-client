@@ -8,8 +8,14 @@ import { useProfileStore } from "../../store/useProfileStore";
 import { Edit, Heart, MessageCircleMore, Trash } from "lucide-react";
 import ConfirmationDialog from "../ConfirmationDialog";
 
-const PostGrid = ({ posts, onDelete, onRemove, saved, authUserId, userDataId }) => {
-
+const PostGrid = ({
+  posts,
+  onDelete,
+  onRemove,
+  saved,
+  authUserId,
+  userDataId,
+}) => {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deletingIds, setDeletingIds] = useState(new Set());
 
@@ -20,11 +26,11 @@ const PostGrid = ({ posts, onDelete, onRemove, saved, authUserId, userDataId }) 
 
   const removeFromSaved = async (postId) => {
     const res = await saveRemovePost(postId);
-    if(res.removed) {
+    if (res.removed) {
       onRemove(postId);
       toast.success("Post removed from your save list.");
     }
-  }
+  };
 
   const confirmDelete = async (id) => {
     if (!id) {
@@ -75,7 +81,7 @@ const PostGrid = ({ posts, onDelete, onRemove, saved, authUserId, userDataId }) 
                   alt={`Post by user`}
                 />
                 <div className="absolute inset-0 z-20 hidden group-hover:flex flex-col items-center justify-center space-y-2 transition-opacity duration-300">
-                  <div className={`flex space-x-4 ${!saved && 'hidden'}`}>
+                  <div className={`flex space-x-4 ${!saved && "hidden"}`}>
                     <button
                       className="flex flex-col items-center text-red-500"
                       onClick={(e) => {
@@ -84,43 +90,43 @@ const PostGrid = ({ posts, onDelete, onRemove, saved, authUserId, userDataId }) 
                         removeFromSaved(post._id);
                       }}
                     >
-                      <Trash className="size-5 md:size-6"/>
+                      <Trash className="size-5 md:size-6" />
                     </button>
                   </div>
-                  <div className={`flex space-x-4 ${saved && 'hidden'}`}>
+                  <div className={`flex space-x-4 ${saved && "hidden"}`}>
                     <p className="flex flex-col items-center">
-                      <Heart className="size-5 md:size-6"/>
+                      <Heart className="size-5 md:size-6" />
                       {post.likes}
                     </p>
                     <p className="flex flex-col items-center">
-                      <MessageCircleMore className="size-5 md:size-6"/>
+                      <MessageCircleMore className="size-5 md:size-6" />
                       {post.commentsCount}
                     </p>
                   </div>
-                  { authUserId === userDataId && (
-                    <div className={`flex space-x-4 ${ saved && 'hidden' }`}>
-                    <button
-                      className="flex flex-col items-center text-red-500"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setDeleteTarget(post._id);
-                      }}
+                  {authUserId === userDataId && (
+                    <div className={`flex space-x-4 ${saved && "hidden"}`}>
+                      <button
+                        className="flex flex-col items-center text-red-500"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setDeleteTarget(post._id);
+                        }}
                       >
-                      <Trash className="size-5 md:size-6"/>
-                    </button>
-                    <button
-                      className="flex flex-col items-center text-blue-500"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        getUpdatePost(post);
-                      }}
+                        <Trash className="size-5 md:size-6" />
+                      </button>
+                      <button
+                        className="flex flex-col items-center text-blue-500"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          getUpdatePost(post);
+                        }}
                       >
-                      <Edit className="size-5 md:size-6"/>
-                    </button>
-                  </div>
-                    )}
+                        <Edit className="size-5 md:size-6" />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </>
             )}

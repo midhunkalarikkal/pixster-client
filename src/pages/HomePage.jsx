@@ -20,10 +20,10 @@ const HomePage = () => {
     homeScrollerDataLoading,
   } = useHomeStore();
 
-  const fetchPostsData = useCallback( async () => {
+  const fetchPostsData = useCallback(async () => {
     const posts = await getHomePostScrollerData();
     setHomePostsData(posts);
-  },[getHomePostScrollerData]);
+  }, [getHomePostScrollerData]);
 
   useEffect(() => {
     fetchPostsData();
@@ -44,14 +44,14 @@ const HomePage = () => {
             </>
           ) : homePostsData && homePostsData.length > 0 ? (
             <>
-            <HomePostsScroller
+              <HomePostsScroller
                 key={homePostsData[0]?.userPostDetails?._id}
                 post={homePostsData[0]}
               />
 
-            <HorizontalScrollingSuggestion />
-            
-            {homePostsData.slice(1).map((post) => (
+              <HorizontalScrollingSuggestion />
+
+              {homePostsData.slice(1).map((post) => (
                 <HomePostsScroller
                   key={post?.userPostDetails?._id}
                   post={post}

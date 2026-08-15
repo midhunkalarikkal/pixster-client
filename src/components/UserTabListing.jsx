@@ -10,14 +10,23 @@ import { useSearchStore } from "../store/useSearchStore";
 import UserBarSkeleton from "./skeletons/UserBarSkeleton";
 import { useProfileStore } from "../store/useProfileStore";
 
-const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFollowingsCount }) => {
-  
+const UserTabListing = ({
+  authUserId,
+  userDataId,
+  updateFollowersCount,
+  updateFollowingsCount,
+}) => {
   const navigate = useNavigate();
   let [reqdProfiles, setReqProfiles] = useState([]);
 
   const { socket } = useAuthStore();
   const { setListPage, listPage } = useProfileStore();
-  const { getSearchSelectedUser, cancelConnectionRequest, removeConnection, unFollowConnectionRequest } = useSearchStore();
+  const {
+    getSearchSelectedUser,
+    cancelConnectionRequest,
+    removeConnection,
+    unFollowConnectionRequest,
+  } = useSearchStore();
   const {
     requestedProfiles,
     setRequestedProfiles,
@@ -35,7 +44,6 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
     setTab,
   } = useProfileStore();
 
-
   useEffect(() => {
     if (!requestedProfiles) return;
     setReqProfiles(requestedProfiles);
@@ -48,46 +56,55 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
         data.userData,
       ];
       setIncomingRequestedProfiles(updatedProfilesList);
-    }
+    };
 
     const handlePopIncomingRequestedProfile = (data) => {
       const updatedProfileList = incomingrequestedProfiles.filter(
-        (profile) => profile._id !== data.fromUserId
+        (profile) => profile._id !== data.fromUserId,
       );
 
       setIncomingRequestedProfiles(updatedProfileList);
-    }
+    };
 
     const handlePopRequestedProfile = (data) => {
       if (requestedProfiles) {
         const updatedRequestedProfiles = requestedProfiles.filter(
-          (profile) => profile._id !== data.fromUserId
+          (profile) => profile._id !== data.fromUserId,
         );
         setRequestedProfiles(updatedRequestedProfiles);
       }
-    }
+    };
 
     const handlePopProfileFromFollowings = (data) => {
-      if(followingProfiles) {
+      if (followingProfiles) {
         const updatedFollowingProfiles = followingProfiles.filter(
-          (profile) => profile._id !== data.userId
+          (profile) => profile._id !== data.userId,
         );
         setFollowingProfiles(updatedFollowingProfiles);
         updateFollowingsCount();
       }
-    }
+    };
 
     socket?.on("followRequest", handlePushIncomingRequestedProfile);
     socket?.on("requestCancel", handlePopIncomingRequestedProfile);
-    socket?.on("requestAccepted",handlePopRequestedProfile);
+    socket?.on("requestAccepted", handlePopRequestedProfile);
     socket?.on("removeConnection", handlePopProfileFromFollowings);
-    return () => { 
+    return () => {
       socket?.off("followRequest", handlePushIncomingRequestedProfile);
-      socket?.off("requestCancel", handlePopIncomingRequestedProfile); 
+      socket?.off("requestCancel", handlePopIncomingRequestedProfile);
       socket?.off("requestAccepted", handlePopRequestedProfile);
-      socket?.off("removeConnection", handlePopProfileFromFollowings)
-    }
-  },[socket, incomingrequestedProfiles, setIncomingRequestedProfiles, setRequestedProfiles, requestedProfiles, setFollowingProfiles, followingProfiles, updateFollowingsCount]);
+      socket?.off("removeConnection", handlePopProfileFromFollowings);
+    };
+  }, [
+    socket,
+    incomingrequestedProfiles,
+    setIncomingRequestedProfiles,
+    setRequestedProfiles,
+    requestedProfiles,
+    setFollowingProfiles,
+    followingProfiles,
+    updateFollowingsCount,
+  ]);
 
   const handleCancelRequest = (user, e) => {
     e.preventDefault();
@@ -96,7 +113,7 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
       .then((data) => {
         if (data) {
           const updatedProfiles = requestedProfiles.filter(
-            (user) => user._id !== data
+            (user) => user._id !== data,
           );
           setReqProfiles(updatedProfiles);
         }
@@ -109,15 +126,19 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
   const handleUnfollowConnection = async (user, e) => {
     e.preventDefault();
     e.stopPropagation();
-    if(!user) {
+    if (!user) {
       toast.error("Something went wrong, please try again");
       return;
     }
-    const userId = await unFollowConnectionRequest(user._id, "unfollowed", true)
-    if(userId) {
+    const userId = await unFollowConnectionRequest(
+      user._id,
+      "unfollowed",
+      true,
+    );
+    if (userId) {
       const updatedFollowingsProfiles = followingProfiles.filter(
-        (profile) => profile._id !== userId
-      )
+        (profile) => profile._id !== userId,
+      );
       setFollowingProfiles(updatedFollowingsProfiles);
       updateFollowingsCount();
     }
@@ -126,27 +147,26 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
   const handleRemoveConnection = async (user, e) => {
     e.preventDefault();
     e.stopPropagation();
-    if(!user) {
+    if (!user) {
       toast.error("Something went wrong please try again");
       return;
     }
     const userId = await removeConnection(user?._id, "removed");
-    if(userId) {
-      const updatedFollowersProfiles = followersProfiles.filter((profile) => 
-        profile._id !== userId
+    if (userId) {
+      const updatedFollowersProfiles = followersProfiles.filter(
+        (profile) => profile._id !== userId,
       );
       setFollowersProfiles(updatedFollowersProfiles);
       updateFollowersCount();
     }
-  }
+  };
 
   const handleUserTabClick = async (userId) => {
     await getSearchSelectedUser(userId);
     setTab(0);
     setListPage(false);
-    navigate('/profile');
+    navigate("/profile");
   };
-
 
   return (
     <div
@@ -194,7 +214,11 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
                 />
               ))
             ) : (
-             <ListMessage authUserId={authUserId} userDataId={userDataId} tabNum={0} />
+              <ListMessage
+                authUserId={authUserId}
+                userDataId={userDataId}
+                tabNum={0}
+              />
             ))}
 
           {tab === 3 &&
@@ -213,7 +237,11 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
                 />
               ))
             ) : (
-                <ListMessage authUserId={authUserId} userDataId={userDataId} tabNum={1} />
+              <ListMessage
+                authUserId={authUserId}
+                userDataId={userDataId}
+                tabNum={1}
+              />
             ))}
 
           {tab === 4 &&
@@ -232,13 +260,15 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
                 />
               ))
             ) : (
-                <ListMessage tabNum={2} />
+              <ListMessage tabNum={2} />
             ))}
 
-          {tab === 5 && (incomingrequestedProfilesLoading ? (
+          {tab === 5 &&
+            (incomingrequestedProfilesLoading ? (
               <UserBarSkeleton />
-            ) : incomingrequestedProfiles && incomingrequestedProfiles.length > 0 ? (
-                incomingrequestedProfiles.map((user) => (
+            ) : incomingrequestedProfiles &&
+              incomingrequestedProfiles.length > 0 ? (
+              incomingrequestedProfiles.map((user) => (
                 <UserTab
                   key={user._id}
                   authUserId={authUserId}
@@ -247,7 +277,7 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
                 />
               ))
             ) : (
-                <ListMessage tabNum={3} />
+              <ListMessage tabNum={3} />
             ))}
         </div>
       </div>

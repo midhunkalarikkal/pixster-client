@@ -39,37 +39,37 @@ export const useAuthFormStore = create((set, get) => ({
     const { changeLoading } = useAuthStore.getState();
     changeLoading(false);
     set({
-        loginForm: false,
-        signUpForm: false,
-        verifyOtpForm: true,
-        verifyEmailForm: false,
-        resetPasswordForm: false,
-      });
+      loginForm: false,
+      signUpForm: false,
+      verifyOtpForm: true,
+      verifyEmailForm: false,
+      resetPasswordForm: false,
+    });
   },
 
   handleGoToEmailVerification: () => {
     const { changeLoading } = useAuthStore.getState();
     changeLoading(false);
     set({
-        loginForm: false,
-        signUpForm: false,
-        verifyOtpForm: false,
-        verifyEmailForm: true,
-        forgotPassword: true,
-        resetPasswordForm: false,
-      });
+      loginForm: false,
+      signUpForm: false,
+      verifyOtpForm: false,
+      verifyEmailForm: true,
+      forgotPassword: true,
+      resetPasswordForm: false,
+    });
   },
 
   handleGotoResetPassword: () => {
     const { changeLoading } = useAuthStore.getState();
     changeLoading(false);
     set({
-        loginForm: false,
-        signUpForm: false,
-        verifyOtpForm: false,
-        verifyEmailForm: false,
-        resetPasswordForm: true,
-      });
+      loginForm: false,
+      signUpForm: false,
+      verifyOtpForm: false,
+      verifyEmailForm: false,
+      resetPasswordForm: true,
+    });
   },
 
   updateTimer: () => {
@@ -88,7 +88,7 @@ export const useAuthFormStore = create((set, get) => ({
   },
 
   startTimer: () => {
-    set({ otpTimerIsRunning : true });
-    set({ otpRemainingTime : 300 });
-  }
+    set({ otpTimerIsRunning: true });
+    set({ otpRemainingTime: 300 });
+  },
 }));

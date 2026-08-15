@@ -76,9 +76,7 @@ const OtpVerifyForm = () => {
       </form>
       <p className="mt-6 flex justify-between text-xs md:text-sm/6 px-2">
         {resentLoading ? (
-          <span className="font-semibold cursor-pointer">
-            Sending
-          </span>
+          <span className="font-semibold cursor-pointer">Sending</span>
         ) : otpTimerIsRunning ? (
           <span className="text-center text-xs md:text-sm/6">
             {formatTime(otpRemainingTime)}

@@ -27,7 +27,6 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      
       <InputWithLabel
         label="Email"
         type="email"
@@ -49,10 +48,15 @@ const LoginForm = () => {
         setShowPassword={setShowPassword}
       />
 
-      <button className="" onClick={(e) => {
-        e.preventDefault();
-        handleGoToEmailVerification();
-      }}>Forgot Password ?</button>
+      <button
+        className=""
+        onClick={(e) => {
+          e.preventDefault();
+          handleGoToEmailVerification();
+        }}
+      >
+        Forgot Password ?
+      </button>
 
       <button
         type="submit"

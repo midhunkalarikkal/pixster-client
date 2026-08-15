@@ -11,17 +11,17 @@ const FeedSkeleton = () => {
             <div className="skeleton h-2 w-32"></div>
           </div>
         </div>
-        <Ellipsis className="size-6"/>
+        <Ellipsis className="size-6" />
       </div>
       <div className="skeleton h-[24rem] md:h-[32rem]"></div>
       <div className="py-2 px-4 space-y-2">
         <div className="flex justify-between">
           <div className="flex space-x-4">
-            <Heart className="size-6"/>
-            <MessageCircle className="size-6"/>
-            <Send className="size-6"/>
+            <Heart className="size-6" />
+            <MessageCircle className="size-6" />
+            <Send className="size-6" />
           </div>
-          <Bookmark className="size-6"/>
+          <Bookmark className="size-6" />
         </div>
         <div className="w-6/12 h-3 skeleton"></div>
         <div className="w-10/12 h-3 skeleton"></div>

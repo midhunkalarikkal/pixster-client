@@ -8,15 +8,19 @@ import { useNotificationStore } from "../store/useNotificationStores";
 import { useNotificationsSocketEvent } from "../utils/hooks/useNotificationsSocketEvents";
 
 const NotificationsPage = () => {
-
   const navigate = useNavigate();
   const { socket } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();
-  const { notifications, notificationsLoading, getNotifications, setNotifications } = useNotificationStore();
+  const {
+    notifications,
+    notificationsLoading,
+    getNotifications,
+    setNotifications,
+  } = useNotificationStore();
 
   const handleViewUser = (id) => {
     getSearchSelectedUser(id);
-    navigate('/profile');
+    navigate("/profile");
   };
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const NotificationsPage = () => {
                 onClick={(id, e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  handleViewUser(id)
+                  handleViewUser(id);
                 }}
                 time={notification.createdAt}
               />

@@ -7,59 +7,63 @@ import { useSearchStore } from "../../store/useSearchStore";
 import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
 
 const HomePostsScroller = ({ post }) => {
-
   const navigate = useNavigate();
   const [postLiked, setPostLiked] = useState(false);
   const [postLikeCount, setPostLikeCount] = useState(0);
   const [postSaved, setPostSaved] = useState(false);
-  const [postCommentsCount, setPostCommentsCount] = useState(0)
+  const [postCommentsCount, setPostCommentsCount] = useState(0);
 
   const { getSearchSelectedUser } = useSearchStore();
-  const { likeOrDislikePost, saveRemovePost, setCommentUploaderOpen, setSelectedPostId } = usePostStore();
+  const {
+    likeOrDislikePost,
+    saveRemovePost,
+    setCommentUploaderOpen,
+    setSelectedPostId,
+  } = usePostStore();
 
   useEffect(() => {
-    if(post) {
+    if (post) {
       setPostLikeCount(post?.userPostDetails?.likes);
       setPostLiked(post?.userPostDetails?.likedByCurrentUser);
       setPostSaved(post?.userPostDetails?.savedByCurrentUser);
       setPostCommentsCount(post?.userPostDetails?.commentsCount);
     }
-  },[post])
+  }, [post]);
 
   const handleOpenCommentUploader = async (postId, e) => {
     e.preventDefault();
     e.stopPropagation();
     setCommentUploaderOpen(true);
     setSelectedPostId(postId);
-  }
+  };
 
   const handlePostSaveOrRemove = async (postId, e) => {
     e.preventDefault();
     e.stopPropagation();
     const res = await saveRemovePost(postId);
-    if(res.saved) {
+    if (res.saved) {
       setPostSaved(true);
-    } else if(res.removed) {
+    } else if (res.removed) {
       setPostSaved(false);
     }
-  }
+  };
 
   const handleLikeOrDislikePost = async (postId, e) => {
     e.preventDefault();
     e.stopPropagation();
     const res = await likeOrDislikePost(postId);
-    if(res.liked) {
+    if (res.liked) {
       setPostLiked(true);
       setPostLikeCount((prev) => prev + 1);
-    } else if(res.disliked){
+    } else if (res.disliked) {
       setPostLiked(false);
       setPostLikeCount((prev) => prev - 1);
     }
-  }
+  };
 
   const handleUserTabClick = async (userId) => {
     await getSearchSelectedUser(userId);
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (
@@ -77,14 +81,18 @@ const HomePostsScroller = ({ post }) => {
             className="flex flex-col space-y-1"
             onClick={() => handleUserTabClick(post?._id)}
           >
-            <h5 className="font-semibold text-sm lg:text-md">{post?.userName}</h5>
+            <h5 className="font-semibold text-sm lg:text-md">
+              {post?.userName}
+            </h5>
           </div>
         </div>
         <Ellipsis className="cursor-pointer" />
       </div>
 
       {/* Post media */}
-      <div className={`md:h-[28rem] lg:h-[32rem] w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Thread" && 'hidden'}`}>
+      <div
+        className={`md:h-[28rem] lg:h-[32rem] w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
+      >
         <img
           src={post?.userPostDetails?.media}
           alt="Post media"
@@ -93,7 +101,9 @@ const HomePostsScroller = ({ post }) => {
       </div>
 
       {/* Thread */}
-      <div className={`h-auto p-6 border-[1px] border-base-300 rounded-md w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Post" && 'hidden'}`}>
+      <div
+        className={`h-auto p-6 border-[1px] border-base-300 rounded-md w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Post" && "hidden"}`}
+      >
         <p>{post?.userPostDetails?.content}</p>
       </div>
 
@@ -102,42 +112,49 @@ const HomePostsScroller = ({ post }) => {
         <div className="flex justify-between">
           <div className="flex space-x-4 items-center">
             <span className="flex items-center space-x-1">
-              <Heart className={`cursor-pointer size-6 ${postLiked && 'fill-red-500 text-red-500'}`} 
+              <Heart
+                className={`cursor-pointer size-6 ${postLiked && "fill-red-500 text-red-500"}`}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                   handleLikeOrDislikePost(post?.userPostDetails?._id, e);
-                }} 
+                }}
               />
               <p>{postLikeCount}</p>
             </span>
             <span className="flex items-center space-x-1">
-              <MessageCircle className="cursor-pointer size-6" 
+              <MessageCircle
+                className="cursor-pointer size-6"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  handleOpenCommentUploader(post?.userPostDetails?._id, e)
+                  handleOpenCommentUploader(post?.userPostDetails?._id, e);
                 }}
               />
               <p>{postCommentsCount}</p>
             </span>
             <span className="flex items-center space-x-1">
-              <Send className="size-6"/>
+              <Send className="size-6" />
             </span>
           </div>
-          <Bookmark className={`cursor-pointer size-6 ${postSaved && 'fill-blue-400 text-blue-400'} ${post?.userPostDetails?.type === "Thread" && 'hidden'}`}
+          <Bookmark
+            className={`cursor-pointer size-6 ${postSaved && "fill-blue-400 text-blue-400"} ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              handlePostSaveOrRemove(post?.userPostDetails?._id, e)
+              handlePostSaveOrRemove(post?.userPostDetails?._id, e);
             }}
           />
         </div>
-        <p className={`text-sm ${post?.userPostDetails?.type === "Thread" && 'hidden'}`}>
+        <p
+          className={`text-sm ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
+        >
           {post?.userPostDetails?.content}
         </p>
         <p className="text-xs text-gray-500">
-          {formatDistanceToNow(new Date(post?.userPostDetails?.createdAt), {addSuffix : true })}
+          {formatDistanceToNow(new Date(post?.userPostDetails?.createdAt), {
+            addSuffix: true,
+          })}
         </p>
       </div>
     </div>
@@ -155,7 +172,8 @@ HomePostsScroller.propTypes = {
       content: PropTypes.string.isRequired,
       type: PropTypes.string,
       createdAt: PropTypes.string.isRequired,
-      likes: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      likes: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
       likedByCurrentUser: PropTypes.bool.isRequired,
       savedByCurrentUser: PropTypes.bool.isRequired,
       commentsCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

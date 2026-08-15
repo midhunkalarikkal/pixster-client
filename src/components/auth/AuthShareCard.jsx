@@ -27,13 +27,9 @@ const AuthShareCard = ({ floatingRef }) => {
         "
       >
         <div className="mb-3 flex items-center justify-between">
-          <span className="text-xs font-semibold">
-            Share your moment
-          </span>
+          <span className="text-xs font-semibold">Share your moment</span>
 
-          <span className="text-base-content/40">
-            ↗
-          </span>
+          <span className="text-base-content/40">↗</span>
         </div>
 
         <div className="h-2 w-3/4 rounded-full bg-base-content/10" />

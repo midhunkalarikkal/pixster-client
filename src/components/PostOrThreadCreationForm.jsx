@@ -1,20 +1,14 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import {
-    handleCaptionChange,
-    handleImageChange,
-    handlePostSubmit,
+  handleCaptionChange,
+  handleImageChange,
+  handlePostSubmit,
 } from "../utils/createPageMethods";
 import { ImagePlus, X } from "lucide-react";
 import { useProfileStore } from "../store/useProfileStore";
 
-const PostOrThreadCreationForm = (
-{
-    setUploading,
-    isPost,
-    setIsPost,
-}
-) => {
+const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
@@ -23,13 +17,13 @@ const PostOrThreadCreationForm = (
   const { uploadPost, postForUpdating, updatePost, setPostForUpdating } =
     useProfileStore();
 
-      useEffect(() => {
-        if (postForUpdating) {
-          setCaption(postForUpdating.content);
-          setImagePreview(postForUpdating.media);
-          setIsPost(!!postForUpdating.media);
-        }
-      }, [postForUpdating, setIsPost]);
+  useEffect(() => {
+    if (postForUpdating) {
+      setCaption(postForUpdating.content);
+      setImagePreview(postForUpdating.media);
+      setIsPost(!!postForUpdating.media);
+    }
+  }, [postForUpdating, setIsPost]);
 
   return (
     <form
@@ -47,7 +41,7 @@ const PostOrThreadCreationForm = (
           setCaption,
           setImage,
           setImagePreview,
-          setPostForUpdating
+          setPostForUpdating,
         )
       }
       className="space-y-4"
@@ -83,7 +77,11 @@ const PostOrThreadCreationForm = (
           className={`textarea textarea-bordered h-24 max-h-96 ${
             captionError ? "textarea-error" : ""
           }`}
-          placeholder={isPost ? "Write your caption here, not more than 200 characters" : "Write your thread here"}
+          placeholder={
+            isPost
+              ? "Write your caption here, not more than 200 characters"
+              : "Write your thread here"
+          }
           value={caption}
           onChange={(e) => handleCaptionChange(e, setCaption, setCaptionError)}
         ></textarea>
@@ -126,9 +124,9 @@ const PostOrThreadCreationForm = (
 };
 
 PostOrThreadCreationForm.propTypes = {
-    setUploading: PropTypes.func,
-    isPost: PropTypes.bool,
-    setIsPost: PropTypes.func,
-}
+  setUploading: PropTypes.func,
+  isPost: PropTypes.bool,
+  setIsPost: PropTypes.func,
+};
 
 export default PostOrThreadCreationForm;

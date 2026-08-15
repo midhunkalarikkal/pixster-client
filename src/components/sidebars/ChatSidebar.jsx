@@ -7,7 +7,6 @@ import { useAuthStore } from "../../store/useAuthStore";
 import SidebarSkeleton from "../skeletons/SidebarSkeleton";
 
 const ChatSidebar = () => {
-
   const {
     getUsers,
     users,
@@ -27,9 +26,12 @@ const ChatSidebar = () => {
       : users;
   }, [showOnlineOnly, users, onlineUsers]);
 
-  const handleOnlineUsers = useCallback((userIds) => {
-    setOnlineUsers(userIds);
-  }, [setOnlineUsers]);
+  const handleOnlineUsers = useCallback(
+    (userIds) => {
+      setOnlineUsers(userIds);
+    },
+    [setOnlineUsers],
+  );
 
   useEffect(() => {
     getUsers();
@@ -39,7 +41,11 @@ const ChatSidebar = () => {
 
   useEffect(() => {
     const setNewMessage = (message) => {
-      setLastMessage(message.senderId, message.text ?  message.text : "Image", message.createdAt );
+      setLastMessage(
+        message.senderId,
+        message.text ? message.text : "Image",
+        message.createdAt,
+      );
     };
     socket?.on("newMessage", setNewMessage);
     return () => socket?.off("newMessage", setNewMessage);
@@ -100,7 +106,9 @@ const ChatSidebar = () => {
 
             <div className="w-10/12">
               <div className="flex justify-between">
-                <p className="font-medium truncate text-sm lg:text-md">{user.fullName}</p>
+                <p className="font-medium truncate text-sm lg:text-md">
+                  {user.fullName}
+                </p>
                 {getLastMessage(user._id) && (
                   <p className="text-xs truncate mt-1 ">
                     {formatDate(getLastMessage(user._id)?.date)}

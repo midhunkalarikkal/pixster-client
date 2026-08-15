@@ -1,6 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL : import.meta.env.MODE === "development" ? import.meta.env.VITE_BACKEND_URL_DEV : import.meta.env.VITE_BACKEND_URL_PROD,
-    withCredentials : true
+  baseURL:
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_BACKEND_URL_DEV
+      : import.meta.env.VITE_BACKEND_URL_PROD,
+  withCredentials: true,
 });

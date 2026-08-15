@@ -47,9 +47,7 @@ const AuthNotification = ({ floatingRef }) => {
         </div>
 
         <div>
-          <p className="text-sm font-semibold">
-            New interaction
-          </p>
+          <p className="text-sm font-semibold">New interaction</p>
 
           <p className="text-xs text-base-content/50">
             Someone liked your post

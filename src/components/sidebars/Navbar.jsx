@@ -16,7 +16,7 @@ const Navbar = () => {
   const { logout, authUser } = useAuthStore();
   const { setSearchSelectedUserNull, getSearchSelectedUser } = useSearchStore();
 
-  const handleUserTabClick = async (userId,e) => {
+  const handleUserTabClick = async (userId, e) => {
     e.preventDefault();
     e.stopPropagation();
     await getSearchSelectedUser(userId, navigate);
@@ -27,12 +27,13 @@ const Navbar = () => {
       {authUser && (
         <div className="flex flex-col items-center justify-between space-y-6 gap-2 h-full">
           <div className=" flex flex-col space-y-4 items-center lg:items-start">
-            
             <Link
               to="/"
               className="flex items-center gap-2.5 hover:opacity-80 transition-all ml-4 my-6"
             >
-              <h3 className="text-2xl font-bold italic hidden lg:block">Pixster</h3>
+              <h3 className="text-2xl font-bold italic hidden lg:block">
+                Pixster
+              </h3>
               <h3 className="text-2xl font-bold italic block lg:hidden">P</h3>
             </Link>
 
@@ -45,7 +46,10 @@ const Navbar = () => {
               className={`flex btn bg-base-100 border-0`}
               onClick={(e) => handleUserTabClick(authUser._id, e)}
             >
-              <img src={authUser.profilePic || '/user_avatar.jpg'} className="size-6 rounded-full"/>
+              <img
+                src={authUser.profilePic || "/user_avatar.jpg"}
+                className="size-6 rounded-full"
+              />
               <span className="hidden lg:block">Profile</span>
             </button>
 

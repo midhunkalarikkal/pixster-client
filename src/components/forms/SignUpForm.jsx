@@ -4,7 +4,6 @@ import InputWithLabel from "./InputWithLabel";
 import { useAuthStore } from "../../store/useAuthStore";
 
 const SignUpForm = () => {
-  
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -28,7 +27,6 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-
       <InputWithLabel
         label="Fullname"
         type="text"

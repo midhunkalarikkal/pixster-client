@@ -4,14 +4,14 @@ import { axiosInstance } from "../lib/axios";
 
 export const useHomeStore = create((set) => ({
   homeScrollerDataLoading: false,
-  
+
   storyUploaderOpen: false,
   storyUploading: false,
   myStory: null,
   usersStories: null,
   userStoriesLoading: false,
 
-  setMyStory: (data) => set({ myStory : data }),
+  setMyStory: (data) => set({ myStory: data }),
 
   getHomePostScrollerData: async () => {
     set({ homeScrollerDataLoading: true });
@@ -34,7 +34,7 @@ export const useHomeStore = create((set) => ({
       set({ storyUploading: true });
       const res = await axiosInstance.post("/story/uploadStory", data);
       set({ myStory: res.data.story });
-      set({ storyUploaderOpen : false });
+      set({ storyUploaderOpen: false });
       toast.success(res.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -44,7 +44,7 @@ export const useHomeStore = create((set) => ({
   },
 
   getStories: async () => {
-    set({ userStoriesLoading : true });
+    set({ userStoriesLoading: true });
     try {
       const res = await axiosInstance("/story/getStories");
       set({ usersStories: res.data.stories });
@@ -52,17 +52,17 @@ export const useHomeStore = create((set) => ({
     } catch (error) {
       toast.error(error.response.data.message);
     } finally {
-      set({ userStoriesLoading : false });
+      set({ userStoriesLoading: false });
     }
   },
 
   deleteMyStory: async () => {
     try {
-      const res = await axiosInstance.delete('/story/deleteMyStory');
+      const res = await axiosInstance.delete("/story/deleteMyStory");
       toast.success(res.data.message);
       return res.data;
     } catch (error) {
       toast.error(error.response.data.message);
     }
-  }
+  },
 }));

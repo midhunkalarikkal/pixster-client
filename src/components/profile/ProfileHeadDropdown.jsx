@@ -10,7 +10,6 @@ const ProfileHeadDropdown = ({
   getIncomingRequestedProfiles,
   setListPage,
 }) => {
-
   const { setTab } = useProfileStore();
 
   const isHidden = authUserId !== userId;

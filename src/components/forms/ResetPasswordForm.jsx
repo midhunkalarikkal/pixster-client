@@ -20,9 +20,9 @@ const ResetPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await updatePassword({
-      password : formData.password
+      password: formData.password,
     });
-    if(res.success) {
+    if (res.success) {
       toast.success(res.message);
       handleGotoLogin();
     }

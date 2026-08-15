@@ -7,7 +7,6 @@ import ConfirmationDialog from "../ConfirmationDialog";
 import { useNavigate } from "react-router-dom";
 
 const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
-
   const navigate = useNavigate();
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deletingIds, setDeletingIds] = useState(new Set());
@@ -85,7 +84,7 @@ const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          getUpdateThread(thread)
+                          getUpdateThread(thread);
                         }}
                       >
                         <Edit className="size-5 md:size-6" />

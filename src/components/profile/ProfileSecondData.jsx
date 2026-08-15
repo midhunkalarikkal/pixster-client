@@ -9,11 +9,16 @@ import { useProfileSecondData } from "../../utils/hooks/userProfileSecondData";
 import {
   handlePostDelete as externalPostDelete,
   handleThreadDelete as externalThreadDelete,
-  handleRemoveFromSaved as externalRemoveFromSaved
+  handleRemoveFromSaved as externalRemoveFromSaved,
 } from "../../utils/profileSecondDataMethods";
 
-const ProfileSecondData = ({ authUserId, userDataId, status, updatepostCount, accountType }) => {
-
+const ProfileSecondData = ({
+  authUserId,
+  userDataId,
+  status,
+  updatepostCount,
+  accountType,
+}) => {
   const [tab, setTab] = useState(0);
   const [userPosts, setUserPosts] = useState([]);
   const [userPostsLoading, setUserPostsLoading] = useState(false);
@@ -25,8 +30,8 @@ const ProfileSecondData = ({ authUserId, userDataId, status, updatepostCount, ac
   const { getUserPosts, getUserSavedPosts, getUserThreads } = useProfileStore();
   const isOwnProfile = authUserId === userDataId;
 
-  useProfileSecondData(
-    {setUserPosts,
+  useProfileSecondData({
+    setUserPosts,
     setUserSavedPosts,
     authUserId,
     userDataId,
@@ -38,17 +43,17 @@ const ProfileSecondData = ({ authUserId, userDataId, status, updatepostCount, ac
     getUserThreads,
     setUserThreads,
     status,
-    accountType}
-  );
+    accountType,
+  });
 
   const handlePostDelete = (id) => {
     externalPostDelete(id, setUserPosts, updatepostCount);
   };
-  
+
   const handleThreadDelete = (id) => {
     externalThreadDelete(id, setUserThreads, updatepostCount);
   };
-  
+
   const handleRemoveFromSaved = (id) => {
     externalRemoveFromSaved(id, setUserSavedPosts);
   };
@@ -56,7 +61,7 @@ const ProfileSecondData = ({ authUserId, userDataId, status, updatepostCount, ac
   return (
     <>
       {authUserId !== userDataId ? (
-        (status === "accepted" || accountType || status === "followed") ? (
+        status === "accepted" || accountType || status === "followed" ? (
           <div className="border-t-[1px] border-base-300 flex justify-center">
             <div className="flex justify-around w-8/12 mt-4">
               <button
@@ -110,7 +115,10 @@ const ProfileSecondData = ({ authUserId, userDataId, status, updatepostCount, ac
       )}
       <div className="flex flex-col justify-center items-center w-full py-1 md:py-4">
         {tab === 0 &&
-          (isOwnProfile || status === "accepted" || accountType || status === "followed" ? (
+          (isOwnProfile ||
+          status === "accepted" ||
+          accountType ||
+          status === "followed" ? (
             userPostsLoading ? (
               <PostsSkeleton />
             ) : userPosts.length > 0 ? (

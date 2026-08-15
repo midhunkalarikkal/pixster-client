@@ -2,7 +2,6 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 
 const ListMessage = ({ authUserId, userDataId, tabNum }) => {
-
   const authUserMessage = [
     "You don't have any followers yet.",
     "You haven't followed anyone yet.",

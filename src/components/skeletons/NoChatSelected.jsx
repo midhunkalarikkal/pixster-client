@@ -3,7 +3,6 @@ const NoChatSelected = () => {
     <div className="hidden sm:flex sm:w-6/12 md:w-8/12 flex-col items-center justify-center p-4 md:p-16 bg-base-100/50 overflow-y-scroll no-scrollbar">
       <div className="w-full text-center space-y-6">
         <div className="flex justify-center gap-4 mb-4">
-
           <div className="relative w-full space-y-2">
             <div className="chat chat-start">
               <div className="chat-bubble skeleton w-36 h-6 md:w-56 md:h-16 rounded-md"></div>
@@ -42,7 +41,6 @@ const NoChatSelected = () => {
               <div className="chat-bubble skeleton w-32 h-6 md:w-56 md:h-16 rounded-md"></div>
             </div>
           </div>
-
         </div>
         <h2 className="text-xl md:text-2xl font-bold">Welcome to Pixster!</h2>
         <p className="text-base-content/60 text-xs md:text-md">

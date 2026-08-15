@@ -8,7 +8,6 @@ const SidebarSkeleton = () => {
       className="h-full w-full md:w-4/12 border-r border-base-300 
     flex flex-col transition-all duration-200"
     >
-
       <div className="border-b border-base-300 w-full p-5">
         <div className="flex items-center gap-2">
           <Users className="w-6 h-6" />

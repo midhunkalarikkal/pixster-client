@@ -63,9 +63,7 @@ const AuthFloatingPost = ({ floatingRef }) => {
             <span className="text-sm">⌁</span>
           </div>
 
-          <span className="text-xs text-base-content/50">
-            2.4k
-          </span>
+          <span className="text-xs text-base-content/50">2.4k</span>
         </div>
       </div>
     </div>

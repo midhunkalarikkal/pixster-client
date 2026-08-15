@@ -21,7 +21,7 @@ const HorizontalScrollingSuggestion = () => {
     const res = await sendConnectionRequest(user._id, "requested");
     if (res.status === 200) {
       const updatedList = suggestions.filter(
-        (item) => item._id !== res.data.userData._id
+        (item) => item._id !== res.data.userData._id,
       );
       setSuggestions(updatedList);
     }
@@ -31,9 +31,9 @@ const HorizontalScrollingSuggestion = () => {
     await getSearchSelectedUser(userId, navigate);
   };
 
-    if(!suggestions || suggestions.length === 0) {
-      return null;
-    }
+  if (!suggestions || suggestions.length === 0) {
+    return null;
+  }
 
   return (
     <div className="w-full md:hidden p-2">

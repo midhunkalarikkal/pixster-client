@@ -3,12 +3,11 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useSearchStore } from "../store/useSearchStore";
 
 const AuthUserTab = () => {
-    
   const navigate = useNavigate();
   const { authUser } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();
 
-  const handleUserTabClick = async (userId,e) => {
+  const handleUserTabClick = async (userId, e) => {
     e.preventDefault();
     e.stopPropagation();
     await getSearchSelectedUser(userId, navigate);
@@ -33,8 +32,12 @@ const AuthUserTab = () => {
           </div>
           <div>
             <div className="flex flex-col items-start">
-              <p className="font-medium truncate text-sm lg:text-md">{authUser?.fullName}</p>
-              <p className="font-light truncate text-sm lg:text-md">{authUser?.userName}</p>
+              <p className="font-medium truncate text-sm lg:text-md">
+                {authUser?.fullName}
+              </p>
+              <p className="font-light truncate text-sm lg:text-md">
+                {authUser?.userName}
+              </p>
             </div>
           </div>
         </button>

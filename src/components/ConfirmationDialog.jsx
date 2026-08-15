@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const ConfirmationDialog = ({
   isOpen,
@@ -6,8 +6,8 @@ const ConfirmationDialog = ({
   content,
   onCancel,
   onConfirm,
-  confirmText = 'Delete',
-  cancelText = 'Cancel',
+  confirmText = "Delete",
+  cancelText = "Cancel",
 }) => {
   if (!isOpen) return null;
 

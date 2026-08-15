@@ -1,4 +1,3 @@
-
 const SuggestionCardSkeletion = () => {
   return (
     <div className="bg-base-200 flex flex-col h-52 w-48 justify-center items-center rounded-md shadow-md px-6">

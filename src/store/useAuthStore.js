@@ -7,7 +7,10 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { useGeminiStore } from "./useGeminiStore";
 // import { exportKeys, generateKeys } from "../utils/helpers";
 
-const BASE_URL = import.meta.env.MODE === "development" ? import.meta.env.VITE_BACKEND_URL_DEV : import.meta.env.VITE_BACKEND_URL_PROD;
+const BASE_URL =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_BACKEND_URL_DEV
+    : import.meta.env.VITE_BACKEND_URL_PROD;
 
 export const useAuthStore = create(
   persist(
@@ -62,11 +65,11 @@ export const useAuthStore = create(
         try {
           // const {publicKey, privateKey} = await generateKeys();
           // const keyData = await exportKeys(publicKey, privateKey);
-        //   const res = await axiosInstance.post("/auth/verifyOtp",  {
-        //     ...data,
-        //   publicKey: keyData.publicKey,
-        //   privateKey: keyData.privateKey,
-        // });
+          //   const res = await axiosInstance.post("/auth/verifyOtp",  {
+          //     ...data,
+          //   publicKey: keyData.publicKey,
+          //   privateKey: keyData.privateKey,
+          // });
           const res = await axiosInstance.post("/auth/verifyOtp", data);
           stopTimer();
           toast.success(res.data.message);
@@ -87,7 +90,7 @@ export const useAuthStore = create(
         set({ loading: true });
         set({ authEmail: data.email });
         try {
-          const res = await axiosInstance.post("/auth/login",data);
+          const res = await axiosInstance.post("/auth/login", data);
           set({ authUser: res.data });
           set({ authEmail: null });
           toast.success("Logged in successfully.");
@@ -184,14 +187,14 @@ export const useAuthStore = create(
       changeProfileType: (data) => {
         const { authUser } = get();
         set({
-          authUser : {
+          authUser: {
             ...authUser,
-            public: data
-          }
-        })
+            public: data,
+          },
+        });
       },
-      
-      setOnlineUsers: (userIds) => set({ onlineUsers : userIds }),
+
+      setOnlineUsers: (userIds) => set({ onlineUsers: userIds }),
 
       // Socket implementation
 
@@ -207,7 +210,6 @@ export const useAuthStore = create(
         socket.connect();
 
         set({ socket: socket });
-
       },
 
       disconnectSocket: () => {
@@ -222,6 +224,6 @@ export const useAuthStore = create(
         authEmail: state.authEmail,
       }),
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

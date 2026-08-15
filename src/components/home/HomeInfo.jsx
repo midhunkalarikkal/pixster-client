@@ -7,9 +7,10 @@ const HomeInfo = () => {
             🔒 Your Privacy Matters
           </h2>
           <p className="text-base leading-relaxed">
-            For your privacy and safety, all accounts are currently set to private.
-            You can get started by searching for your friends, sending them a friend request,
-            and once connected, you can enjoy seamless communication together.
+            For your privacy and safety, all accounts are currently set to
+            private. You can get started by searching for your friends, sending
+            them a friend request, and once connected, you can enjoy seamless
+            communication together.
           </p>
           <p className="mt-6 text-sm italic">
             Let’s build your private circle, securely.
@@ -17,7 +18,7 @@ const HomeInfo = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeInfo
+export default HomeInfo;

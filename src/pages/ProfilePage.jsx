@@ -10,10 +10,13 @@ import ProfileSecondData from "../components/profile/ProfileSecondData.jsx";
 import ProfileAcceptReject from "../components/profile/ProfileAcceptReject.jsx";
 import ProfileHeadDropdown from "../components/profile/ProfileHeadDropdown.jsx";
 import { useProfileSocketEvents } from "../utils/hooks/useProfileSocketEvents.js";
-import { handlePostDelete, handleRemoveFollowerProfile, handleRemoveFollowingPrfoile } from "../utils/profilePageMethods.js";
+import {
+  handlePostDelete,
+  handleRemoveFollowerProfile,
+  handleRemoveFollowingPrfoile,
+} from "../utils/profilePageMethods.js";
 
 const ProfilePage = () => {
-
   const [userData, setUserData] = useState(null);
   const [connectionData, setConnectionData] = useState(null);
   const [revConnectionData, setRevConnectionData] = useState(null);
@@ -57,7 +60,13 @@ const ProfilePage = () => {
     }
   }, [selectedUserId, getSearchSelectedUser]);
 
-  useProfileSocketEvents(socket, userData, setUserData, setRevConnection, setConnectionData);
+  useProfileSocketEvents(
+    socket,
+    userData,
+    setUserData,
+    setRevConnection,
+    setConnectionData,
+  );
 
   if (searchSelectedUserLoading) {
     return (
@@ -96,117 +105,116 @@ const ProfilePage = () => {
 
           <div className="space-y-8">
             {/* Profile Header With Profile image and other details */}
-           <div>
-            <div className="flex">
-              <div className="w-4/12 flex justify-center items-center">
-                <img
-                  src={userData?.profilePic || "/user_avatar.jpg"}
-                  alt="Profile"
-                  className="size-20 md:size-28 rounded-full object-cover border-2 md:border-4"
-                />
-              </div>
-
-              {/* Profile Post, following, followers count, Fullename, about */}
-              <div className="flex flex-col w-8/12 justify-center">
-                <div className="mb-2 md:mb-4">
-                  <h2 className="text-md md:text-lg font-semibold">
-                    {userData?.fullName}
-                  </h2>
+            <div>
+              <div className="flex">
+                <div className="w-4/12 flex justify-center items-center">
+                  <img
+                    src={userData?.profilePic || "/user_avatar.jpg"}
+                    alt="Profile"
+                    className="size-20 md:size-28 rounded-full object-cover border-2 md:border-4"
+                  />
                 </div>
 
-                <div className="flex space-x-10">
-                  <div className="flex flex-col items-center">
-                    <Image className="size-5 md:size-6 text-zinc-400" />
-                    <p className="text-md md:text-lg font-semibold">
-                      {userData?.postsCount}
-                    </p>
-                    <p className="text-xs md:text-sm text-zinc-400 w-full">
-                      My Feed
-                    </p>
+                {/* Profile Post, following, followers count, Fullename, about */}
+                <div className="flex flex-col w-8/12 justify-center">
+                  <div className="mb-2 md:mb-4">
+                    <h2 className="text-md md:text-lg font-semibold">
+                      {userData?.fullName}
+                    </h2>
                   </div>
 
-                  {userData && authUser?._id !== userData?._id ? (
-                    connectionData &&
-                    (connectionData.status === "accepted" ||
-                      connectionData.status === "followed") ? (
-                      <>
-                        <UserStat
-                          icon={Users}
-                          count={userData?.followersCount}
-                          label="Followers"
-                          onClick={() => {
-                            getFollowersProfiles(userData._id);
-                            setListPage(true);
-                            setTab(2);
-                          }}
-                        />
-                        <UserStat
-                          icon={UserPlus}
-                          count={userData?.followingsCount}
-                          label="Following"
-                          onClick={() => {
-                            getFollowingsProfiles(userData._id);
-                            setListPage(true);
-                            setTab(3);
-                          }}
-                        />
-                      </>
+                  <div className="flex space-x-10">
+                    <div className="flex flex-col items-center">
+                      <Image className="size-5 md:size-6 text-zinc-400" />
+                      <p className="text-md md:text-lg font-semibold">
+                        {userData?.postsCount}
+                      </p>
+                      <p className="text-xs md:text-sm text-zinc-400 w-full">
+                        My Feed
+                      </p>
+                    </div>
+
+                    {userData && authUser?._id !== userData?._id ? (
+                      connectionData &&
+                      (connectionData.status === "accepted" ||
+                        connectionData.status === "followed") ? (
+                        <>
+                          <UserStat
+                            icon={Users}
+                            count={userData?.followersCount}
+                            label="Followers"
+                            onClick={() => {
+                              getFollowersProfiles(userData._id);
+                              setListPage(true);
+                              setTab(2);
+                            }}
+                          />
+                          <UserStat
+                            icon={UserPlus}
+                            count={userData?.followingsCount}
+                            label="Following"
+                            onClick={() => {
+                              getFollowingsProfiles(userData._id);
+                              setListPage(true);
+                              setTab(3);
+                            }}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <UserStat
+                            icon={Users}
+                            count={userData?.followersCount}
+                            label="Followers"
+                          />
+                          <UserStat
+                            icon={UserPlus}
+                            count={userData?.followingsCount}
+                            label="Following"
+                          />
+                        </>
+                      )
                     ) : (
-                      <>
-                        <UserStat
-                          icon={Users}
-                          count={userData?.followersCount}
-                          label="Followers"
-                        />
-                        <UserStat
-                          icon={UserPlus}
-                          count={userData?.followingsCount}
-                          label="Following"
-                        />
-                      </>
-                    )
-                  ) : (
-                    userData && (
-                      <>
-                        <UserStat
-                          icon={Users}
-                          count={userData?.followersCount}
-                          label="Followers"
-                          onClick={() => {
-                            getFollowersProfiles(authUser._id);
-                            setListPage(true);
-                            setTab(2);
-                          }}
-                        />
-                        <UserStat
-                          icon={UserPlus}
-                          count={userData?.followingsCount}
-                          label="Following"
-                          onClick={() => {
-                            getFollowingsProfiles(authUser._id);
-                            setListPage(true);
-                            setTab(3);
-                          }}
-                        />
-                      </>
-                    )
-                  )}
+                      userData && (
+                        <>
+                          <UserStat
+                            icon={Users}
+                            count={userData?.followersCount}
+                            label="Followers"
+                            onClick={() => {
+                              getFollowersProfiles(authUser._id);
+                              setListPage(true);
+                              setTab(2);
+                            }}
+                          />
+                          <UserStat
+                            icon={UserPlus}
+                            count={userData?.followingsCount}
+                            label="Following"
+                            onClick={() => {
+                              getFollowingsProfiles(authUser._id);
+                              setListPage(true);
+                              setTab(3);
+                            }}
+                          />
+                        </>
+                      )
+                    )}
+                  </div>
                 </div>
-
               </div>
-            </div>
 
-            {/* Fullname and about */}
-            <div className="flex w-full justify-center">
-              <div className="flex flex-col mt-1 md:mt-4 w-10/12">
-                <h2 className="text-sm md:text-lg font-semibold">
-                  {userData?.userName}
-                </h2>
-                <p className="text-zinc-400 text-xs md:text-sm mt-1 line-clamp-2 w-full">
-                  {userData?.about}
-                </p>
+              {/* Fullname and about */}
+              <div className="flex w-full justify-center">
+                <div className="flex flex-col mt-1 md:mt-4 w-10/12">
+                  <h2 className="text-sm md:text-lg font-semibold">
+                    {userData?.userName}
+                  </h2>
+                  <p className="text-zinc-400 text-xs md:text-sm mt-1 line-clamp-2 w-full">
+                    {userData?.about}
+                  </p>
+                </div>
               </div>
-            </div>
             </div>
 
             {/* MainButton, follow, cancel, unfollow */}
@@ -243,7 +251,7 @@ const ProfilePage = () => {
                       cancelConnectionRequest(
                         userData?._id,
                         "cancelled",
-                        false
+                        false,
                       );
                     }}
                   />
@@ -260,7 +268,7 @@ const ProfilePage = () => {
                         unFollowConnectionRequest(
                           userData?._id,
                           "unfollowed",
-                          false
+                          false,
                         );
                       }}
                     />
@@ -286,7 +294,9 @@ const ProfilePage = () => {
           authUserId={authUser?._id}
           userDataId={userData?._id}
           updateFollowersCount={() => handleRemoveFollowerProfile(setUserData)}
-          updateFollowingsCount={() => handleRemoveFollowingPrfoile(setUserData)}
+          updateFollowingsCount={() =>
+            handleRemoveFollowingPrfoile(setUserData)
+          }
         />
       )}
     </>

@@ -1,19 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useSearchStore } from "../../store/useSearchStore";
-import {
-  Home,
-  LogOut,
-  PlusSquare,
-  Search,
-} from "lucide-react";
+import { Home, LogOut, PlusSquare, Search } from "lucide-react";
 
 const MobileBottomBar = () => {
   const navigate = useNavigate();
   const { logout, authUser } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();
 
-  const handleProfileClick = async (userId ,e) => {
+  const handleProfileClick = async (userId, e) => {
     e.preventDefault();
     await getSearchSelectedUser(userId);
     navigate("/profile");
@@ -43,7 +38,10 @@ const MobileBottomBar = () => {
             className={`btn bg-base-100 border-0`}
             onClick={(e) => handleProfileClick(authUser._id, e)}
           >
-            <img src={authUser?.profilePic || "/user_avatar.jpg"} className="size-6 rounded-full"/>
+            <img
+              src={authUser?.profilePic || "/user_avatar.jpg"}
+              className="size-6 rounded-full"
+            />
           </button>
         </div>
       )}

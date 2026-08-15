@@ -17,7 +17,7 @@ export const handlePostSubmit = async (
   setCaption,
   setImage,
   setImagePreview,
-  setPostForUpdating
+  setPostForUpdating,
 ) => {
   event.preventDefault();
 
@@ -95,7 +95,7 @@ export const handleGenerateCaptions = (
   setGeminiCaptions,
   incrementRequestCount,
   setLastRequestTime,
-  startCooldown
+  startCooldown,
 ) => {
   e.preventDefault();
   const query = searchText.current?.value?.trim();
@@ -106,10 +106,13 @@ export const handleGenerateCaptions = (
 
   if (!canGenerate()) {
     const wait = Math.floor((lastRequestTime + 180000 - Date.now()) / 1000);
-    return toast.info(`Please wait ${formatTimeForClock(wait)} before generating again`);
+    return toast.info(
+      `Please wait ${formatTimeForClock(wait)} before generating again`,
+    );
   }
 
-  const geminiQuery = GEMINI_QUERY_INITAL + searchText.current.value + GEMINI_QUERY_END;
+  const geminiQuery =
+    GEMINI_QUERY_INITAL + searchText.current.value + GEMINI_QUERY_END;
 
   toast.promise(
     (async () => {
@@ -117,8 +120,7 @@ export const handleGenerateCaptions = (
         const result = await ai.models.generateContent({
           model: "gemini-3.6-flash",
           contents: geminiQuery,
-        }
-        );
+        });
 
         const text = result.text;
         if (!text) {
@@ -143,6 +145,6 @@ export const handleGenerateCaptions = (
       pending: "Generating captions...",
       success: "Captions ready!",
       error: "Failed to generate.",
-    }
+    },
   );
 };

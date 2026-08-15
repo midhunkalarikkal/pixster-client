@@ -11,7 +11,7 @@ const StoryUploader = () => {
     storyUploaderOpen,
     storyUploading,
     setStoryUploaderOpen,
-    uploadStory
+    uploadStory,
   } = useHomeStore();
 
   const handleUpload = async (file) => {
@@ -20,10 +20,10 @@ const StoryUploader = () => {
     formData.append("storyImage", file);
 
     try {
-        await uploadStory(formData);
+      await uploadStory(formData);
     } catch {
       toast.error("story uploading error");
-    } 
+    }
   };
 
   const handleCloseStoryUploader = () => {

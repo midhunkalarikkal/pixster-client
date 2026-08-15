@@ -1,4 +1,3 @@
-
 const UserBarSkeleton = () => {
   return (
     <div className="w-full space-y-2">

@@ -4,11 +4,10 @@ import { useProfileStore } from "../store/useProfileStore";
 import PostOrThreadCreationForm from "../components/PostOrThreadCreationForm";
 
 const CreatePost = () => {
-
   const [isPost, setIsPost] = useState(true);
   const [uploading, setUploading] = useState(false);
 
-  const { postForUpdating } =useProfileStore();
+  const { postForUpdating } = useProfileStore();
 
   if (uploading) {
     return (
@@ -43,8 +42,12 @@ const CreatePost = () => {
             You can post only the caption and it will be treated as a thread
           </p>
         )}
-        <PostOrThreadCreationForm setUploading={setUploading} isPost={isPost} setIsPost={setIsPost}/>
-        <Gemini isPost={isPost} setIsPost={setIsPost}/>
+        <PostOrThreadCreationForm
+          setUploading={setUploading}
+          isPost={isPost}
+          setIsPost={setIsPost}
+        />
+        <Gemini isPost={isPost} setIsPost={setIsPost} />
       </div>
     </div>
   );

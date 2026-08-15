@@ -2,8 +2,7 @@ import { THEMES } from "../../utils/constants";
 import { useThemeStore } from "../../store/useThemeStore";
 
 const ThemeChangerForSettings = () => {
-
-    const { theme, setTheme } = useThemeStore();
+  const { theme, setTheme } = useThemeStore();
 
   return (
     <>

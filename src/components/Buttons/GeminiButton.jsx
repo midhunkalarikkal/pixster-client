@@ -11,7 +11,7 @@ const GeminiButton = ({ text }) => {
 };
 
 GeminiButton.propTypes = {
-    text: PropTypes.string,
-}
+  text: PropTypes.string,
+};
 
 export default GeminiButton;
