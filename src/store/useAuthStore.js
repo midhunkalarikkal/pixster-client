@@ -7,10 +7,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { useGeminiStore } from "./useGeminiStore";
 // import { exportKeys, generateKeys } from "../utils/helpers";
 
-const BASE_URL =
-  import.meta.env.MODE === "development"
-    ? "http://localhost:5001"
-    : "https://pixster.onrender.com";
+const BASE_URL = import.meta.env.MODE === "development" ? import.meta.env.VITE_BACKEND_URL_DEV : import.meta.env.VITE_BACKEND_URL_PROD;
 
 export const useAuthStore = create(
   persist(

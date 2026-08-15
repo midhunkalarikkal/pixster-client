@@ -116,9 +116,8 @@ const AuthPage = () => {
   return (
     <div
       ref={pageRef}
-      className="
-        fixed
-        inset-0
+      className="fixed
+    inset-0
         z-50
         flex
         min-h-screen
@@ -208,15 +207,9 @@ const AuthPage = () => {
                 >
                   <span
                     className="
-                      bg-linear-to-r
-                      from-rose-500
-                      to-pink-400
-                      bg-clip-text
                       text-3xl
                       font-black
                       italic
-                      tracking-tight
-                      text-transparent
                     "
                   >
                     Pixster
@@ -348,20 +341,6 @@ const AuthPage = () => {
                   </p>
                 </motion.div>
               </AnimatePresence>
-
-              <div className="mx-auto mt-7 flex justify-center">
-                <div
-                  className="
-                    h-1
-                    w-12
-                    rounded-full
-                    bg-linear-to-r
-                    from-rose-500
-                    to-pink-400
-                    opacity-70
-                  "
-                />
-              </div>
             </div>
           </div>
         </div>
