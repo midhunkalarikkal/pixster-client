@@ -44,5 +44,5 @@ export const useProfileSecondData = (
         };
       
         fetchData();
-      }, [authUserId, userDataId, status]);
+      }, [authUserId, userDataId, status, accountType, getUserPosts, getUserSavedPosts, getUserThreads, setUserPosts, setUserPostsLoading, setUserSavedPosts, setUserSavedPostsLoading, setUserThreads, setUserThreadsLoading ]);
 }

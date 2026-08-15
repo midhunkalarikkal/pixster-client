@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const AuthShareCard = ({ floatingRef }) => {
   return (
     <div
@@ -52,6 +54,10 @@ const AuthShareCard = ({ floatingRef }) => {
       </div>
     </div>
   );
+};
+
+AuthShareCard.propTypes = {
+  floatingRef: PropTypes.object,
 };
 
 export default AuthShareCard;

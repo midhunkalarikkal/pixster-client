@@ -27,7 +27,7 @@ const ProfileSettings = () => {
 
   useEffect(() => {
     setAbout(authUser?.about)
-  },[])
+  },[authUser?.about])
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];

@@ -1,7 +1,7 @@
 import Comment from "./Comment";
 import { toast } from "react-toastify";
 import { PlusIcon, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePostStore } from "../../store/usePostStore";
 import { useAuthStore } from "../../store/useAuthStore";
 
@@ -37,15 +37,15 @@ const CommentContainer = () => {
     }));
   };
 
-  const fetchAllComments = async () => {
+  const fetchAllComments = useCallback(async () => {
     const res = await getComments({ postId: selectedPostId });
     setComments(res);
-  };
+  },[getComments, selectedPostId]);
 
   useEffect(() => {
     if (!selectedPostId) return;
     fetchAllComments();
-  }, [selectedPostId]);
+  }, [selectedPostId, fetchAllComments]);
 
   const handleReplyClick = async (commentId) => {
     setAddComment(true);

@@ -21,7 +21,7 @@ const NotificationsPage = () => {
 
   useEffect(() => {
     getNotifications();
-  }, []);
+  }, [getNotifications]);
 
   useNotificationsSocketEvent(socket, setNotifications);
 

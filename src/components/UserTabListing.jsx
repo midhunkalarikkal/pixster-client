@@ -87,7 +87,7 @@ const UserTabListing = ({ authUserId, userDataId, updateFollowersCount, updateFo
       socket?.off("requestAccepted", handlePopRequestedProfile);
       socket?.off("removeConnection", handlePopProfileFromFollowings)
     }
-  },[socket, incomingrequestedProfiles, setIncomingRequestedProfiles, setRequestedProfiles, requestedProfiles, setFollowingProfiles, followingProfiles]);
+  },[socket, incomingrequestedProfiles, setIncomingRequestedProfiles, setRequestedProfiles, requestedProfiles, setFollowingProfiles, followingProfiles, updateFollowingsCount]);
 
   const handleCancelRequest = (user, e) => {
     e.preventDefault();

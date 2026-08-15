@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const AuthFloatingPost = ({ floatingRef }) => {
   return (
     <div
@@ -68,6 +70,10 @@ const AuthFloatingPost = ({ floatingRef }) => {
       </div>
     </div>
   );
+};
+
+AuthFloatingPost.propTypes = {
+  floatingRef: PropTypes.object,
 };
 
 export default AuthFloatingPost;

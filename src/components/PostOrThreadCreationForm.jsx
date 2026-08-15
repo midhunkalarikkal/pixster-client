@@ -29,7 +29,7 @@ const PostOrThreadCreationForm = (
           setImagePreview(postForUpdating.media);
           setIsPost(!!postForUpdating.media);
         }
-      }, [postForUpdating]);
+      }, [postForUpdating, setIsPost]);
 
   return (
     <form

@@ -13,7 +13,7 @@ const Stories = () => {
 
   useEffect(() => {
     getStories();
-  }, []);
+  }, [getStories]);
 
   const openStoryUploader = () => {
     setStoryUploaderOpen(true);

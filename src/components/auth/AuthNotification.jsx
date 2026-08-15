@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const AuthNotification = ({ floatingRef }) => {
   return (
     <div
@@ -56,6 +58,10 @@ const AuthNotification = ({ floatingRef }) => {
       </div>
     </div>
   );
+};
+
+AuthNotification.propTypes = {
+  floatingRef: PropTypes.object,
 };
 
 export default AuthNotification;

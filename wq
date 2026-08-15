@@ -1,0 +1,19 @@
+[33mcommit ba7e7a4afaa7c4003a0ba4c96c005c66048677c7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Author: midhunkalarikkal <91378594+midhunkalarikkal@users.noreply.github.com>
+Date:   Sat Aug 15 17:40:55 2026 +0530
+
+    feat(gemini): migrate to new Gemini SDK and update API integration
+    
+    Replace deprecated @google/generative-ai package with @google/genai
+    Update Gemini API calls to the new SDK syntax
+    Update model configuration to gemini-3.6-flash
+    Correct Gemini response handling using result.text
+    Add safe handling for empty or undefined Gemini responses
+    Improve JSON response parsing for generated captions
+    Update error handling for Gemini API failures
+
+[33mcommit 1b42c068f262f7a88396706086dd7ba690ebc705[m
+Author: midhunkalarikkal <91378594+midhunkalarikkal@users.noreply.github.com>
+Date:   Fri Aug 14 23:11:26 2026 +0530
+
+    chore: initialize separate frontend repository from monorepo

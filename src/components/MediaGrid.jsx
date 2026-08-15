@@ -22,7 +22,7 @@ const MediaGrid = () => {
     };
 
     fetchPosts()
-  }, []);
+  }, [fetchMediaGrid]);
   
   return (
     <div className="md:w-8/12 h-full hidden md:flex justify-center">

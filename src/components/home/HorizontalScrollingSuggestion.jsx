@@ -13,7 +13,7 @@ const HorizontalScrollingSuggestion = () => {
 
   useEffect(() => {
     fetchSuggestions();
-  }, []);
+  }, [fetchSuggestions]);
 
   const handlefollowConnection = async (user, e) => {
     e.preventDefault();

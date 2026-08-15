@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const AuthPeopleCard = ({ floatingRef }) => {
   return (
     <div
@@ -58,6 +60,10 @@ const AuthPeopleCard = ({ floatingRef }) => {
       </div>
     </div>
   );
+};
+
+AuthPeopleCard.propTypes = {
+  floatingRef: PropTypes.object,
 };
 
 export default AuthPeopleCard;

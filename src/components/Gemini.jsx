@@ -41,7 +41,7 @@ const Gemini = ({ isPost }) => {
     }
 
     return () => clearInterval(countdownIntervalRef.current);
-  }, [lastRequestTime]);
+  }, [lastRequestTime, resetRequestCount]);
 
   const startCooldown = (initialSeconds = 180) => {
     setCooldownRemaining(initialSeconds);

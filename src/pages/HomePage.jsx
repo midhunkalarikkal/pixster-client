@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Stories from "../components/story/Stories";
 import HomeInfo from "../components/home/HomeInfo.jsx";
 import { usePostStore } from "../store/usePostStore.js";
@@ -20,14 +20,14 @@ const HomePage = () => {
     homeScrollerDataLoading,
   } = useHomeStore();
 
-  const fetchPostsData = async () => {
+  const fetchPostsData = useCallback( async () => {
     const posts = await getHomePostScrollerData();
     setHomePostsData(posts);
-  };
+  },[getHomePostScrollerData]);
 
   useEffect(() => {
     fetchPostsData();
-  }, []);
+  }, [fetchPostsData]);
 
   return (
     <>

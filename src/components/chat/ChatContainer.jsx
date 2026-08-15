@@ -64,7 +64,7 @@ const ChatContainer = () => {
       socket.off("typing");
       socket.off("stopTyping");
     };
-  }, [socket, selectedUser]);
+  }, [socket, selectedUser, authUser._id]);
 
   return (
     <div className="w-full md:w-8/12 flex flex-col overflow-auto md:py-6 border-r border-base-300 mt-5 md:mt-0">
@@ -133,4 +133,5 @@ const ChatContainer = () => {
     </div>
   );
 };
+
 export default ChatContainer;
