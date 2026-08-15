@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+coverage
+.vite
+.env
+.env.*
+package-lock.json
+pnpm-lock.yaml
+.git
+.github
+README.md

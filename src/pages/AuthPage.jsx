@@ -128,7 +128,7 @@ const AuthPage = () => {
         sm:p-6
       "
     >
-       <div className="absolute inset-0 bg-base-300/70 backdrop-blur-2xl" />
+       <div className="absolute inset-0 bg-black/70 backdrop-blur-2xl" />
 
       <AuthFloatingElements />
 
