@@ -1,65 +1,65 @@
-# Pixster
+# PIXSTER-CLIENT
 
-A production-ready social media platform built with the MERN stack, featuring real-time communication, social interactions, secure media management, and AI-assisted content creation.
+### React Frontend Application for Pixster
 
-## Overview
+<p align="left">
+  <img src="https://img.shields.io/badge/Status-Production-success?style=for-the-badge" alt="Production" />
+</p>
 
-Pixster is a full-stack social media platform inspired by modern social networking applications. The project evolved from an initial chat application into a complete social experience supporting content creation, stories, user relationships, real-time messaging, notifications, and AI-powered caption generation.
-
-The application is designed with a focus on maintainability, secure data handling, efficient database operations, real-time communication, and cloud deployment.
-
-## Live Application
-
-* **Frontend:** [Link to frontend](https://example.com/frontend)
-* **Backend:** [Link to backend](https://example.com/backend)
-
----
-
-## Screenshots
-
-### Login
-
-![Pixster Login](docs/screenshots/login.png)
-
-### Home
-
-![Pixster Home](docs/screenshots/home.png)
-
-### Profile
-
-![Pixster Profile](docs/screenshots/profile.png)
-
-### Create Post
-
-![Pixster Create Post](docs/screenshots/create-post.png)
-
-### Settings
-
-![Pixster Settings](docs/screenshots/settings.png)
+Pixster is a production-ready full-stack social media platform built with the **MERN stack**, featuring real-time communication, social interactions, secure media management, and AI-assisted content creation.
 
 ---
 
 ## Technology Stack
 
-| Category                 | Technology                         |
-| ------------------------ | ---------------------------------- |
-| Frontend                 | React, Vite, Tailwind CSS, DaisyUI |
-| Backend                  | Node.js, Express.js                |
-| Database                 | MongoDB Atlas, Mongoose            |
-| State Management         | Zustand                            |
-| Real-Time Communication  | Socket.IO                          |
-| In-Memory Data & Caching | Upstash Redis                      |
-| Media Storage            | Amazon S3                          |
-| HTTP Client              | Axios                              |
-| AI                       | Google Gemini                      |
-| Animations               | GSAP                               |
-| UI Components            | Aceternity UI, DaisyUI             |
-| Notifications            | React Toastify                     |
-| Testing                  | Vitest                             |
-| Frontend Deployment      | Vercel                             |
-| Backend Deployment       | AWS EC2                            |
-| CI/CD                    | GitHub Actions                     |
-| Reverse Proxy            | Nginx                              |
+### Frontend
+
+<p align="left">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/DaisyUI-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white" alt="DaisyUI" />
+  <img src="https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+  <img src="https://img.shields.io/badge/Zustand-443E38?style=for-the-badge&logo=zustand&logoColor=white" alt="Zustand" />
+  <img src="https://img.shields.io/badge/Socket.IO-010101?style=for-the-badge&logo=socketdotio&logoColor=white" alt="Socket.IO" />
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios" />
+  <img src="https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white" alt="Vitest" />
+</p>
+
+### Backend & Data
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB Atlas" />
+  <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" alt="Mongoose" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JWT" />
+  <img src="https://img.shields.io/badge/Amazon_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white" alt="Amazon S3" />
+</p>
+
+### Services & Infrastructure
+
+<p align="left">
+  <img src="https://img.shields.io/badge/AWS_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="AWS EC2" />
+  <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="nginx" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Google Gemini" />
+</p>
+
+---
+
+## Live Application
+
+<p align="left">
+  <a href="https://pixster-client.vercel.app/login">
+    <img src="https://img.shields.io/badge/Live_Application-Pixster-181717?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Application" />
+  </a>
+  <a href="https://github.com/midhunkalarikkal/pixster-server">
+    <img src="https://img.shields.io/badge/Backend_Repository-Pixster_Server-181717?style=for-the-badge&logo=github&logoColor=white" alt="Backend Repository" />
+  </a>
+</p>
 
 ---
 
@@ -67,118 +67,68 @@ The application is designed with a focus on maintainability, secure data handlin
 
 ### Authentication & Account Management
 
-* Email-based OTP verification using Nodemailer
-* JWT-based authentication
-* HTTP-only authentication cookies
-* Sign up and login
-* Password reset
-* Secure password hashing using bcrypt
-* Public and private account types
+- Email-based OTP verification
+- JWT authentication with HTTP-only cookies
+- Secure password hashing with bcrypt
+- Password reset
+- Public and private accounts
 
 ### Posts & Content
 
-* Image posts with captions
-* Text-only posts
-* Post creation, editing, and deletion
-* Likes
-* Comments
-* One-level nested comment replies
-* Save posts
-* Paginated feeds
-* Responsive content presentation
+- Image and text-only posts
+- Captions, likes, comments, and replies
+- Post editing and deletion
+- Save posts
+- Paginated feeds
 
 ### Stories
 
-* Create and view stories
-* Stories automatically expire after 24 hours
+- Create and view stories
+- Automatic 24-hour expiration
 
 ### Social Connections
 
-* Follow and unfollow users
-* Follow requests for private accounts
-* Accept and reject follow requests
-* Follower and following management
-* Paginated follower and following lists
-* Block and unblock users
-* Follow suggestions
-
-### User Search
-
-* User search
-* Search suggestions
-* Debounced search requests to reduce unnecessary server requests
+- Follow and unfollow users
+- Follow requests for private accounts
+- Follower and following management
+- Block and unblock users
+- Follow suggestions
 
 ### Real-Time Communication
 
-Pixster uses Socket.IO to provide real-time communication and presence features.
+Powered by **Socket.IO** and **Redis**:
 
-Supported real-time functionality includes:
-
-* Private messaging
-* Online user indicators
-* Real-time connection status between users
-* Real-time notifications
-* Typing indicators
-
-Redis is used as part of the application's real-time infrastructure.
-
-### Real-Time Notifications
-
-Users receive notifications for relevant social and communication events, including:
-
-* Follow activity
-* Messages
-* Likes
-* Comments
-
-### AI-Assisted Caption Generation
-
-Pixster integrates Google Gemini to assist users with post caption generation.
-
-* Topic-based caption generation
-* Maximum of 5 caption-generation requests per user per day
-* Redis-based request limiting
-
-### Media Management
-
-Media is stored using Amazon S3 with a private storage model.
-
-* Private S3 objects
-* AWS signed URLs for controlled media access
-* Server-side media handling
-* Caching for media access
-
----
-
-## Application Pages
-
-### Home
-
-Provides the primary social feed along with the story section and user interactions.
-
-### Search
-
-Allows users to search for other users with suggestions and debounced requests.
-
-### Profile
-
-Provides user information, posts, followers, and following information.
+- Private messaging
+- Online presence
+- Connection status
+- Typing indicators
+- Real-time notifications
 
 ### Notifications
 
-Displays real-time social and communication notifications.
+Real-time notifications for:
 
-### Chat
+- Follow activity
+- Messages
+- Likes
+- Comments
 
-Provides private real-time messaging between users with online presence and connection status.
+### AI-Assisted Captions
 
-### Create
+Google Gemini integration provides:
 
-Allows users to create image-based posts with captions or text-only posts.
+- Topic-based caption generation
+- Maximum 5 caption-generation requests per user per day
+- Redis-based request limiting
 
-### Settings
+### Secure Media Management
 
-Provides account information, theme preferences, and privacy controls.
+Amazon S3 is used for private media storage.
+
+- Private S3 objects
+- AWS signed URLs
+- Server-side media handling
+- Media access caching
 
 ---
 
@@ -186,226 +136,71 @@ Provides account information, theme preferences, and privacy controls.
 
 Pixster follows an MVC-oriented backend architecture with a modular separation of application responsibilities.
 
-At a high level, the application is structured as follows:
-
 ```text
-                         ┌────────────────────┐
-                         │      Client        │
-                         │ React + Vite       │
-                         └─────────┬──────────┘
-                                   │
-                         HTTP / Socket.IO
-                                   │
-                                   ▼
-                         ┌────────────────────┐
-                         │       Nginx        │
-                         │   Reverse Proxy    │
-                         └─────────┬──────────┘
-                                   │
-                                   ▼
-                         ┌────────────────────┐
-                         │  Express Server    │
-                         │                    │
-                         │ REST API           │
-                         │ Socket.IO          │
-                         │ Authentication     │
-                         │ Business Logic     │
-                         └──────┬─────┬───────┘
-                                │     │
-                 ┌──────────────┘     └────────────────┐
-                 ▼                                     ▼
-       ┌──────────────────┐                  ┌──────────────────┐
-       │  MongoDB Atlas   │                  │  Upstash Redis   │
-       │                  │                  │                  │
-       │ Application Data │                  │ Caching          │
-       │ Social Data      │                  │ Rate Limiting    │
-       └──────────────────┘                  │ Real-Time Data   │
-                                             └──────────────────┘
-
-                 ┌──────────────────┐
-                 │    Amazon S3     │
-                 │                  │
-                 │ Private Media    │
-                 │ Signed URLs      │
-                 └──────────────────┘
+                         ┌─────────────────────┐
+                         │    Pixster Client   │
+                         │    React + Vite     │
+                         └──────────┬──────────┘
+                                    │
+                          HTTP / Socket.IO
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │       nginx         │
+                         │    Reverse Proxy    │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │   Express Server    │
+                         │                     │
+                         │ REST API            │
+                         │ Socket.IO           │
+                         │ Authentication      │
+                         │ Business Logic      │
+                         └──────┬──────┬────┬──┘
+                                │      │    │
+                   ┌────────────┘      └─┐  └──────────────┐
+                   ▼                     ▼                 ▼
+          ┌──────────────────┐  ┌──────────────────┐ ┌─────────────┐ 
+          │  MongoDB Atlas   │  │      Redis       │ │  Amazon s3  │
+          │                  │  │                  │ └─────────────┘
+          │ Application Data │  │ Caching          │
+          │ Social Data      │  │ Rate Limiting    │
+          └──────────────────┘  │ Real-Time Data   │
+                                └──────────────────┘
 ```
 
-### Backend Architecture
+## Related Project
 
-The backend follows an MVC-oriented structure to separate:
+### [Pixster Server](https://github.com/midhunkalarikkal/pixster-server)
 
-* Request handling
-* Business logic
-* Data access
-* Authentication
-* Middleware
-* Real-time communication
+The **Pixster Server** is the backend service powering the Pixster social media platform.
 
-This separation makes the application easier to maintain and extend as new features are introduced.
+Built with Node.js, Express.js, MongoDB, Redis, Socket.IO, and Amazon S3, it provides REST APIs, authentication, data management, real-time communication, caching, and secure media storage for the Pixster Client.
 
----
-
-## Database
-
-MongoDB Atlas is used as the primary database, with Mongoose providing schema modeling and database interaction.
-
-The application uses:
-
-* Referenced document relationships where appropriate
-* MongoDB aggregation pipelines for complex data retrieval
-* Database indexes for frequently queried data
-* Paginated data retrieval for feeds and social lists
-
-Indexes are used to improve the performance of frequently accessed search and feed-related queries.
+<p align="left">
+  <a href="https://github.com/midhunkalarikkal/pixster-server">
+    <img src="https://img.shields.io/badge/View_Pixster_Client-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Pixster Client" />
+  </a>
+</p>
 
 ---
 
-## Real-Time Infrastructure
+## Contribution
 
-Socket.IO is integrated with the Express server to provide real-time functionality.
+This repository is currently **not accepting contributions**.
 
-Redis supports the real-time infrastructure as well as application-level caching and rate limiting.
-
-The real-time system handles:
-
-```text
-User
- │
- ├── Socket.IO Connection
- │
- ├── Online Presence
- │
- ├── Connection Status
- │
- ├── Private Messages
- │
- ├── Typing Indicators
- │
- └── Notifications
-          │
-          ▼
-        Redis
-```
-
-This architecture allows real-time application state to be coordinated efficiently while reducing unnecessary database operations.
+The project is maintained as a personal portfolio and educational project.
 
 ---
-
-## Media Storage & Privacy
-
-Pixster uses Amazon S3 for media storage.
-
-Media objects are kept private and are accessed through AWS signed URLs rather than exposing permanent public object URLs.
-
-The media flow is conceptually:
-
-```text
-User
-  │
-  ▼
-Application
-  │
-  ▼
-Amazon S3
-  │
-  └── Private Object
-          │
-          ▼
-      Signed URL
-          │
-          ▼
-        Client
-```
-
-Caching is also used to improve media access efficiency.
-
----
-
-## Security
-
-Security is implemented across authentication, API access, request processing, and media storage.
-
-Implemented security measures include:
-
-* JWT authentication
-* HTTP-only cookies
-* bcrypt password hashing
-* Email OTP verification
-* OTP expiration
-* Helmet
-* CORS configuration
-* API rate limiting
-* Input validation and sanitization
-* Request size limits
-* Private S3 bucket policies
-* Signed URLs for protected media
-
----
-
-## Performance & Scalability
-
-### Frontend
-
-* Lazy loading
-* Debounced search
-* Shimmer loading states
-* Skeleton loaders
-* Responsive UI
-* Zustand-based state management
-
-### Backend
-
-* MongoDB indexes
-* Aggregation pipelines
-* Paginated queries
-* Redis-based caching
-* Redis-based rate limiting
-* Socket.IO for real-time communication
-
-### Media
-
-Private media is stored in Amazon S3 and accessed through signed URLs. Caching helps reduce repeated processing and improves media access efficiency.
-
----
-
-## Project Structure
-
-A simplified representation of the project structure:
-
-```text
-pixster/
-├── frontend/
-│   ├── src/
-│   └── ...
-│
-├── backend/
-│   ├── src/
-│   └── ...
-│
-├── docs/
-│   └── screenshots/
-│       ├── login.png
-│       ├── home.png
-│       ├── profile.png
-│       ├── create-post.png
-│       └── settings.png
-│
-└── README.md
-```
-
-The exact structure may vary depending on the repository organization.
-
----
-
 
 ## License
 
-Copyright © 2026  [midhunkalarikkal](https://github.com/midhunkalarikkal). All rights reserved.
+**Proprietary**
 
-This project and its source code are proprietary. The source code is provided for viewing and educational/reference purposes only.
+This project is proprietary and provided for portfolio and educational viewing purposes only.
 
-You may not copy, modify, distribute, reproduce, sublicense, publish, or use this code or substantial portions of it without prior written permission from the copyright holder.
+All rights reserved.
 
----
-
-**Pixster** — A full-stack social media platform focused on real-time communication, secure media handling, scalable application architecture, and AI-assisted content creation.
+                   
