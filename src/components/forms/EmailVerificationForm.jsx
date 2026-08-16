@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import { toast } from "react-toastify";
-import InputWithLabel from "./InputWithLabel";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useAuthFormStore } from "../../store/useAuthFormStore";
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'react-toastify';
+import InputWithLabel from './InputWithLabel';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useAuthFormStore } from '../../store/useAuthFormStore';
 
 const EmailVerificationForm = () => {
   const [formData, setFormData] = useState({
-    email: "",
+    email: '',
   });
 
   const { resendOtp, loading } = useAuthStore();
@@ -39,18 +39,14 @@ const EmailVerificationForm = () => {
         placeholder="midhun@gmail.com"
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-full"
-        disabled={loading}
-      >
+      <button type="submit" className="btn btn-primary w-full" disabled={loading}>
         {loading ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
             Loading...
           </>
         ) : (
-          "Verify"
+          'Verify'
         )}
       </button>
     </form>

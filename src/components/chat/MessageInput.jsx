@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import { toast } from "react-toastify";
-import { useRef, useState } from "react";
-import { Image, Send, X } from "lucide-react";
-import { useChatStore } from "../../store/useChatStore";
-import { useAuthStore } from "../../store/useAuthStore";
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useRef, useState } from 'react';
+import { Image, Send, X } from 'lucide-react';
+import { useChatStore } from '../../store/useChatStore';
+import { useAuthStore } from '../../store/useAuthStore';
 
 const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
   const fileInputRef = useRef(null);
   const { sendMessage, selectedUser } = useChatStore();
@@ -17,8 +17,8 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (!file.type.startsWith("image/")) {
-      toast.error("Please select an image file");
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please select an image file');
       return;
     }
 
@@ -34,7 +34,7 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
   const removeImage = () => {
     setImagePreview(null);
     setFile(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const handleSendMessage = async (e) => {
@@ -42,16 +42,16 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
     if (!text.trim() && !imagePreview) return;
 
     const formData = new FormData();
-    formData.append("messageImage", file);
-    formData.append("text", text.trim());
+    formData.append('messageImage', file);
+    formData.append('text', text.trim());
 
     try {
       await sendMessage(formData);
-      setText("");
+      setText('');
       setImagePreview(null);
       setFile(null);
     } catch {
-      toast.error("failed to send message.");
+      toast.error('failed to send message.');
     }
   };
 
@@ -62,7 +62,7 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
       setIsTyping(true);
       if (socket) {
         setMessageSenderId(authUser._id);
-        socket.emit("typing", {
+        socket.emit('typing', {
           fromUserId: authUser._id,
           toUserId: selectedUser._id,
         });
@@ -75,7 +75,7 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
       setIsTyping(false);
       if (socket) {
         setMessageSenderId(authUser._id);
-        socket.emit("stopTyping", {
+        socket.emit('stopTyping', {
           fromUserId: authUser._id,
           toUserId: selectedUser._id,
         });
@@ -125,7 +125,7 @@ const MessageInput = ({ setIsTyping, isTyping, setMessageSenderId }) => {
         <button
           type="button"
           className={`flex btn btn-circle btn-sm
-                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+                     ${imagePreview ? 'text-emerald-500' : 'text-zinc-400'}`}
           onClick={() => fileInputRef.current?.click()}
         >
           <Image size={20} />

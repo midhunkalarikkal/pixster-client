@@ -1,13 +1,13 @@
-import { Eye, EyeOff } from "lucide-react";
-import PropTypes from "prop-types";
+import { Eye, EyeOff } from 'lucide-react';
+import PropTypes from 'prop-types';
 
 const InputWithLabel = ({
   label,
-  type = "text",
+  type = 'text',
   name,
   value,
   onChange,
-  placeholder = "",
+  placeholder = '',
   required = true,
   isPasswordField = false,
   showPassword,

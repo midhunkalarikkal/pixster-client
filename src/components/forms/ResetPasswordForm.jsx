@@ -1,17 +1,17 @@
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import { toast } from "react-toastify";
-import InputWithLabel from "./InputWithLabel";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useAuthFormStore } from "../../store/useAuthFormStore";
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'react-toastify';
+import InputWithLabel from './InputWithLabel';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useAuthFormStore } from '../../store/useAuthFormStore';
 
 const ResetPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    password: "",
-    conformPassword: "",
+    password: '',
+    conformPassword: '',
   });
 
   const { updatePassword, loading } = useAuthStore();
@@ -37,7 +37,7 @@ const ResetPasswordForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <InputWithLabel
         label="Password"
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         name="password"
         value={formData.password}
         onChange={handleChange}
@@ -49,7 +49,7 @@ const ResetPasswordForm = () => {
 
       <InputWithLabel
         label="Confirm Password"
-        type={showConfirmPassword ? "text" : "password"}
+        type={showConfirmPassword ? 'text' : 'password'}
         name="confirmPassword"
         value={formData.confrrmPassword}
         onChange={handleChange}
@@ -59,18 +59,14 @@ const ResetPasswordForm = () => {
         setShowPassword={setShowConfirmPassword}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-full"
-        disabled={loading}
-      >
+      <button type="submit" className="btn btn-primary w-full" disabled={loading}>
         {loading ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
             Loading...
           </>
         ) : (
-          "Submit"
+          'Submit'
         )}
       </button>
     </form>

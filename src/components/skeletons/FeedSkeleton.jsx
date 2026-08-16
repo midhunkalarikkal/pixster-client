@@ -1,4 +1,4 @@
-import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
+import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from 'lucide-react';
 
 const FeedSkeleton = () => {
   return (

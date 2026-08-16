@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { formatDistanceToNow } from "date-fns";
+import PropTypes from 'prop-types';
+import { formatDistanceToNow } from 'date-fns';
 
 const NotificationBar = ({ user, onClick, message, time }) => {
   return (
@@ -10,7 +10,7 @@ const NotificationBar = ({ user, onClick, message, time }) => {
     >
       <div className="relative w-2/12">
         <img
-          src={user.profilePic || "/user_avatar.jpg"}
+          src={user.profilePic || '/user_avatar.jpg'}
           alt={user.userName}
           className="size-8 lg:size-10 object-cover rounded-full"
         />
@@ -18,9 +18,7 @@ const NotificationBar = ({ user, onClick, message, time }) => {
 
       <div className="w-10/12 flex flex-col">
         <div className="flex">
-          <p className="font-medium truncate">
-            {user.fullName + " " + message}
-          </p>
+          <p className="font-medium truncate">{user.fullName + ' ' + message}</p>
         </div>
         <div className="text-sm flex items-center justify-between">
           <p className="text-xs truncate text-stone-500">{user.userName}</p>

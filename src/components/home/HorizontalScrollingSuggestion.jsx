@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import SuggestionCard from "../SuggestionCard";
-import { useNavigate } from "react-router-dom";
-import { useSearchStore } from "../../store/useSearchStore";
-import { useSuggestionStore } from "../../store/useSuggestionStore";
-import SuggestionCardSkeletion from "../skeletons/SuggestionCardSkeletion";
+import { useEffect } from 'react';
+import SuggestionCard from '../SuggestionCard';
+import { useNavigate } from 'react-router-dom';
+import { useSearchStore } from '../../store/useSearchStore';
+import { useSuggestionStore } from '../../store/useSuggestionStore';
+import SuggestionCardSkeletion from '../skeletons/SuggestionCardSkeletion';
 
 const HorizontalScrollingSuggestion = () => {
   const navigate = useNavigate();
@@ -18,11 +18,9 @@ const HorizontalScrollingSuggestion = () => {
   const handlefollowConnection = async (user, e) => {
     e.preventDefault();
     e.stopPropagation();
-    const res = await sendConnectionRequest(user._id, "requested");
+    const res = await sendConnectionRequest(user._id, 'requested');
     if (res.status === 200) {
-      const updatedList = suggestions.filter(
-        (item) => item._id !== res.data.userData._id,
-      );
+      const updatedList = suggestions.filter((item) => item._id !== res.data.userData._id);
       setSuggestions(updatedList);
     }
   };
@@ -41,9 +39,7 @@ const HorizontalScrollingSuggestion = () => {
       <div className="overflow-x-scroll no-scrollbar">
         <div className="flex space-x-2">
           {suggestionsLoading
-            ? Array.from({ length: 10 }).map((_, index) => (
-                <SuggestionCardSkeletion key={index} />
-              ))
+            ? Array.from({ length: 10 }).map((_, index) => <SuggestionCardSkeletion key={index} />)
             : suggestions &&
               suggestions.length > 0 &&
               suggestions.map((user) => (

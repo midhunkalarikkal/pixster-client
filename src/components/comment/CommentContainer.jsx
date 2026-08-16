@@ -1,9 +1,9 @@
-import Comment from "./Comment";
-import { toast } from "react-toastify";
-import { PlusIcon, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
-import { usePostStore } from "../../store/usePostStore";
-import { useAuthStore } from "../../store/useAuthStore";
+import Comment from './Comment';
+import { toast } from 'react-toastify';
+import { PlusIcon, X } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { usePostStore } from '../../store/usePostStore';
+import { useAuthStore } from '../../store/useAuthStore';
 
 const CommentContainer = () => {
   const {
@@ -21,7 +21,7 @@ const CommentContainer = () => {
 
   const { authUser } = useAuthStore();
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [addComment, setAddComment] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState(null);
@@ -127,7 +127,7 @@ const CommentContainer = () => {
         }
       }
     } catch {
-      toast.error("Please try again.");
+      toast.error('Please try again.');
     }
   };
 
@@ -143,7 +143,7 @@ const CommentContainer = () => {
         setComments((prev) => prev.filter((c) => c._id !== commentToDelete));
       }
     } catch {
-      toast.error("Failed to delete comment.");
+      toast.error('Failed to delete comment.');
     } finally {
       setShowDeleteConfirm(false);
       setCommentToDelete(null);
@@ -154,7 +154,7 @@ const CommentContainer = () => {
     e.preventDefault();
 
     if (!comment || !selectedPostId) {
-      toast.error("Something went wrong, please try again.");
+      toast.error('Something went wrong, please try again.');
       return;
     }
 
@@ -174,13 +174,13 @@ const CommentContainer = () => {
         return comment;
       });
       setComments(newComments);
-      setComment("");
+      setComment('');
       setParentCommentId(null);
       setAddComment(false);
     } else {
       const newComments = [...comments, res];
       setComments(newComments);
-      setComment("");
+      setComment('');
       setAddComment(false);
     }
   };
@@ -188,13 +188,13 @@ const CommentContainer = () => {
   return (
     <div
       className={`h-screen w-full bg-black/90 flex justify-center items-center ${
-        commentUploaderOpen ? "absolute" : "hidden"
+        commentUploaderOpen ? 'absolute' : 'hidden'
       }`}
     >
       <div className="w-11/12 md:w-7/12 lg:w-4/12 h-auto rounded-2xl shadow-lg border border-base-300 p-6 flex flex-col bg-base-100">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-md lg:text-lg font-semibold flex items-center">
-            {addComment ? "Add your comment" : "Comments"}
+            {addComment ? 'Add your comment' : 'Comments'}
             {!addComment && (
               <button
                 className="btn btn-sm ml-2"
@@ -226,15 +226,10 @@ const CommentContainer = () => {
             {commentUploading ? (
               <div className="flex flex-col justify-center items-center space-y-4 h-full">
                 <span className="loading loading-bars loading-md"></span>
-                <p className="text-md lg:text-lg">
-                  Comment uploading, please wait
-                </p>
+                <p className="text-md lg:text-lg">Comment uploading, please wait</p>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col justify-between h-full"
-              >
+              <form onSubmit={handleSubmit} className="flex flex-col justify-between h-full">
                 <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
@@ -284,18 +279,11 @@ const CommentContainer = () => {
                   showReplies={() => toggleReplies(comment._id)}
                   replyCount={comment?.replies?.length}
                   isRepliesOn={!!repliesVisible[comment?._id]}
-                  liked={
-                    comment?.commentLikedByAuthUser ||
-                    likedComment[comment?._id]
-                  }
-                  onLikeOrDislike={() =>
-                    handleCommentLikeOrDislike(comment?._id)
-                  }
+                  liked={comment?.commentLikedByAuthUser || likedComment[comment?._id]}
+                  onLikeOrDislike={() => handleCommentLikeOrDislike(comment?._id)}
                 />
                 {comment?.replies && comment?.replies?.length > 0 && (
-                  <div
-                    className={`ml-10 ${repliesVisible[comment._id] && "hidden"}`}
-                  >
+                  <div className={`ml-10 ${repliesVisible[comment._id] && 'hidden'}`}>
                     {comment?.replies.map((reply) => (
                       <Comment
                         key={reply?._id}
@@ -308,13 +296,8 @@ const CommentContainer = () => {
                         profilePic={reply?.user?.profilePic}
                         authUserId={authUser._id}
                         onDelete={() => handleDeleteClick(reply?._id)}
-                        liked={
-                          reply?.commentLikedByAuthUser ||
-                          likedComment[reply?._id]
-                        }
-                        onLikeOrDislike={() =>
-                          handleCommentLikeOrDislike(reply?._id)
-                        }
+                        liked={reply?.commentLikedByAuthUser || likedComment[reply?._id]}
+                        onLikeOrDislike={() => handleCommentLikeOrDislike(reply?._id)}
                       />
                     ))}
                     <button
@@ -336,9 +319,7 @@ const CommentContainer = () => {
               <span className="loading loading-bars loading-md"></span>
             </div>
           ) : (
-            <p className="text-center my-4">
-              No comments on this post, Be the first to add one
-            </p>
+            <p className="text-center my-4">No comments on this post, Be the first to add one</p>
           )}
         </div>
       </div>
@@ -358,10 +339,7 @@ const CommentContainer = () => {
               >
                 Cancel
               </button>
-              <button
-                className="btn btn-sm btn-error"
-                onClick={confirmDeleteComment}
-              >
+              <button className="btn btn-sm btn-error" onClick={confirmDeleteComment}>
                 Delete
               </button>
             </div>

@@ -1,8 +1,8 @@
-import { create } from "zustand";
-import { toast } from "react-toastify";
-import { axiosInstance } from "../lib/axios";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { useProfileStore } from "./useProfileStore";
+import { create } from 'zustand';
+import { toast } from 'react-toastify';
+import { axiosInstance } from '../lib/axios';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { useProfileStore } from './useProfileStore';
 
 export const useSearchStore = create(
   persist(
@@ -34,19 +34,17 @@ export const useSearchStore = create(
       getSearchSelectedUser: async (userId, navigate) => {
         set({ searchSelectedUserLoading: true });
         try {
-          const res = await axiosInstance.get(
-            `/user/fetchSearchedUserProfile/${userId}`,
-          );
+          const res = await axiosInstance.get(`/user/fetchSearchedUserProfile/${userId}`);
           if (res.status === 200) {
             set({ selectedUserId: userId });
             set({ searchSelectedUser: res.data });
-            if (navigate) navigate("/profile");
+            if (navigate) navigate('/profile');
           }
         } catch (error) {
           if (error.response) {
             toast.error(error.response.data.message);
           } else {
-            toast.error("An unexpected error occurred.");
+            toast.error('An unexpected error occurred.');
           }
           set({ searchSelectedUser: null });
         } finally {
@@ -60,7 +58,7 @@ export const useSearchStore = create(
 
       fetchMediaGrid: async () => {
         try {
-          const res = await axiosInstance.get("/user/getMediaGrid");
+          const res = await axiosInstance.get('/user/getMediaGrid');
           return res.data.mediaPosts;
         } catch (error) {
           toast.error(error.response.data.message);
@@ -173,7 +171,7 @@ export const useSearchStore = create(
     }),
 
     {
-      name: "search-store",
+      name: 'search-store',
       partialize: (state) => ({
         selectedUserId: state.selectedUserId,
       }),

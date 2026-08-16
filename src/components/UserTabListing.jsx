@@ -1,14 +1,14 @@
-import UserTab from "./UserTab";
-import { X } from "lucide-react";
-import PropTypes from "prop-types";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import ListMessage from "./profile/ListMessage";
-import { memo, useEffect, useState } from "react";
-import { useAuthStore } from "../store/useAuthStore";
-import { useSearchStore } from "../store/useSearchStore";
-import UserBarSkeleton from "./skeletons/UserBarSkeleton";
-import { useProfileStore } from "../store/useProfileStore";
+import UserTab from './UserTab';
+import { X } from 'lucide-react';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import ListMessage from './profile/ListMessage';
+import { memo, useEffect, useState } from 'react';
+import { useAuthStore } from '../store/useAuthStore';
+import { useSearchStore } from '../store/useSearchStore';
+import UserBarSkeleton from './skeletons/UserBarSkeleton';
+import { useProfileStore } from '../store/useProfileStore';
 
 const UserTabListing = ({
   authUserId,
@@ -51,10 +51,7 @@ const UserTabListing = ({
 
   useEffect(() => {
     const handlePushIncomingRequestedProfile = (data) => {
-      const updatedProfilesList = [
-        ...(incomingrequestedProfiles || []),
-        data.userData,
-      ];
+      const updatedProfilesList = [...(incomingrequestedProfiles || []), data.userData];
       setIncomingRequestedProfiles(updatedProfilesList);
     };
 
@@ -85,15 +82,15 @@ const UserTabListing = ({
       }
     };
 
-    socket?.on("followRequest", handlePushIncomingRequestedProfile);
-    socket?.on("requestCancel", handlePopIncomingRequestedProfile);
-    socket?.on("requestAccepted", handlePopRequestedProfile);
-    socket?.on("removeConnection", handlePopProfileFromFollowings);
+    socket?.on('followRequest', handlePushIncomingRequestedProfile);
+    socket?.on('requestCancel', handlePopIncomingRequestedProfile);
+    socket?.on('requestAccepted', handlePopRequestedProfile);
+    socket?.on('removeConnection', handlePopProfileFromFollowings);
     return () => {
-      socket?.off("followRequest", handlePushIncomingRequestedProfile);
-      socket?.off("requestCancel", handlePopIncomingRequestedProfile);
-      socket?.off("requestAccepted", handlePopRequestedProfile);
-      socket?.off("removeConnection", handlePopProfileFromFollowings);
+      socket?.off('followRequest', handlePushIncomingRequestedProfile);
+      socket?.off('requestCancel', handlePopIncomingRequestedProfile);
+      socket?.off('requestAccepted', handlePopRequestedProfile);
+      socket?.off('removeConnection', handlePopProfileFromFollowings);
     };
   }, [
     socket,
@@ -109,17 +106,15 @@ const UserTabListing = ({
   const handleCancelRequest = (user, e) => {
     e.preventDefault();
     e.stopPropagation();
-    cancelConnectionRequest(user._id, "cancelled", true)
+    cancelConnectionRequest(user._id, 'cancelled', true)
       .then((data) => {
         if (data) {
-          const updatedProfiles = requestedProfiles.filter(
-            (user) => user._id !== data,
-          );
+          const updatedProfiles = requestedProfiles.filter((user) => user._id !== data);
           setReqProfiles(updatedProfiles);
         }
       })
       .catch(() => {
-        toast.error("Request cancellation failed.");
+        toast.error('Request cancellation failed.');
       });
   };
 
@@ -127,14 +122,10 @@ const UserTabListing = ({
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-      toast.error("Something went wrong, please try again");
+      toast.error('Something went wrong, please try again');
       return;
     }
-    const userId = await unFollowConnectionRequest(
-      user._id,
-      "unfollowed",
-      true,
-    );
+    const userId = await unFollowConnectionRequest(user._id, 'unfollowed', true);
     if (userId) {
       const updatedFollowingsProfiles = followingProfiles.filter(
         (profile) => profile._id !== userId,
@@ -148,10 +139,10 @@ const UserTabListing = ({
     e.preventDefault();
     e.stopPropagation();
     if (!user) {
-      toast.error("Something went wrong please try again");
+      toast.error('Something went wrong please try again');
       return;
     }
-    const userId = await removeConnection(user?._id, "removed");
+    const userId = await removeConnection(user?._id, 'removed');
     if (userId) {
       const updatedFollowersProfiles = followersProfiles.filter(
         (profile) => profile._id !== userId,
@@ -165,13 +156,13 @@ const UserTabListing = ({
     await getSearchSelectedUser(userId);
     setTab(0);
     setListPage(false);
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (
     <div
       className={`h-screen w-full bg-black/90 flex justify-center items-center ${
-        listPage && "absolute"
+        listPage && 'absolute'
       }`}
     >
       <div className="w-full max-w-md h-[60%] md:h-[550px] rounded-2xl shadow-lg border border-base-300 p-4 flex flex-col bg-base-100">
@@ -179,10 +170,10 @@ const UserTabListing = ({
           <h2 className="text-lg font-semibold">
             {
               {
-                2: "Followers",
-                3: "Followings",
-                4: "Request By You",
-                5: "Incoming Request",
+                2: 'Followers',
+                3: 'Followings',
+                4: 'Request By You',
+                5: 'Incoming Request',
               }[tab]
             }
           </h2>
@@ -214,11 +205,7 @@ const UserTabListing = ({
                 />
               ))
             ) : (
-              <ListMessage
-                authUserId={authUserId}
-                userDataId={userDataId}
-                tabNum={0}
-              />
+              <ListMessage authUserId={authUserId} userDataId={userDataId} tabNum={0} />
             ))}
 
           {tab === 3 &&
@@ -237,11 +224,7 @@ const UserTabListing = ({
                 />
               ))
             ) : (
-              <ListMessage
-                authUserId={authUserId}
-                userDataId={userDataId}
-                tabNum={1}
-              />
+              <ListMessage authUserId={authUserId} userDataId={userDataId} tabNum={1} />
             ))}
 
           {tab === 4 &&
@@ -266,8 +249,7 @@ const UserTabListing = ({
           {tab === 5 &&
             (incomingrequestedProfilesLoading ? (
               <UserBarSkeleton />
-            ) : incomingrequestedProfiles &&
-              incomingrequestedProfiles.length > 0 ? (
+            ) : incomingrequestedProfiles && incomingrequestedProfiles.length > 0 ? (
               incomingrequestedProfiles.map((user) => (
                 <UserTab
                   key={user._id}

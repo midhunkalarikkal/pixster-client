@@ -1,12 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-const SuggestionCard = ({
-  user,
-  showButton,
-  buttonText,
-  onButtonClick,
-  onClickUser,
-}) => {
+const SuggestionCard = ({ user, showButton, buttonText, onButtonClick, onClickUser }) => {
   return (
     <div
       className="bg-base-200 flex flex-col h-auto w-48 justify-center items-center rounded-md shadow-md px-6 py-4 cursor-pointer"
@@ -14,7 +8,7 @@ const SuggestionCard = ({
     >
       <div className="bg-base-100 rounded-full">
         <img
-          src={user.profilePic || "/user_avatar.jpg"}
+          src={user.profilePic || '/user_avatar.jpg'}
           className="w-24 h-24 rounded-full object-cover"
         />
       </div>

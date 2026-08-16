@@ -1,19 +1,18 @@
-import { Loader2 } from "lucide-react";
-import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
-import InputWithLabel from "./InputWithLabel";
-import { formatTime } from "../../utils/helpers";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useAuthFormStore } from "../../store/useAuthFormStore";
+import { Loader2 } from 'lucide-react';
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import InputWithLabel from './InputWithLabel';
+import { formatTime } from '../../utils/helpers';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useAuthFormStore } from '../../store/useAuthFormStore';
 
 const OtpVerifyForm = () => {
   const [resentLoading, setResendLoading] = useState(false);
   const [formData, setFormData] = useState({
-    otp: "",
+    otp: '',
   });
 
-  const { otpRemainingTime, otpTimerIsRunning, updateTimer } =
-    useAuthFormStore();
+  const { otpRemainingTime, otpTimerIsRunning, updateTimer } = useAuthFormStore();
   const { verifyOtp, loading, resendOtp } = useAuthStore();
 
   useEffect(() => {
@@ -59,18 +58,14 @@ const OtpVerifyForm = () => {
           placeholder="0-0-0-0-0-0"
         />
 
-        <button
-          type="submit"
-          className="btn btn-primary w-full"
-          disabled={loading}
-        >
+        <button type="submit" className="btn btn-primary w-full" disabled={loading}>
           {loading ? (
             <>
               <Loader2 className="h-5 w-5 animate-spin" />
               Loading...
             </>
           ) : (
-            "Verify"
+            'Verify'
           )}
         </button>
       </form>
@@ -78,14 +73,9 @@ const OtpVerifyForm = () => {
         {resentLoading ? (
           <span className="font-semibold cursor-pointer">Sending</span>
         ) : otpTimerIsRunning ? (
-          <span className="text-center text-xs md:text-sm/6">
-            {formatTime(otpRemainingTime)}
-          </span>
+          <span className="text-center text-xs md:text-sm/6">{formatTime(otpRemainingTime)}</span>
         ) : (
-          <span
-            className="font-semibold cursor-pointer"
-            onClick={handleResendOtp}
-          >
+          <span className="font-semibold cursor-pointer" onClick={handleResendOtp}>
             Resend OTP
           </span>
         )}

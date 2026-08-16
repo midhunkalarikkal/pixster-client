@@ -1,21 +1,20 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import {
   handleCaptionChange,
   handleImageChange,
   handlePostSubmit,
-} from "../utils/createPageMethods";
-import { ImagePlus, X } from "lucide-react";
-import { useProfileStore } from "../store/useProfileStore";
+} from '../utils/createPageMethods';
+import { ImagePlus, X } from 'lucide-react';
+import { useProfileStore } from '../store/useProfileStore';
 
 const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
-  const [caption, setCaption] = useState("");
+  const [caption, setCaption] = useState('');
   const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState("");
+  const [imagePreview, setImagePreview] = useState('');
   const [captionError, setCaptionError] = useState(null);
 
-  const { uploadPost, postForUpdating, updatePost, setPostForUpdating } =
-    useProfileStore();
+  const { uploadPost, postForUpdating, updatePost, setPostForUpdating } = useProfileStore();
 
   useEffect(() => {
     if (postForUpdating) {
@@ -47,7 +46,7 @@ const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
       className="space-y-4"
     >
       {/* Image Upload Field */}
-      <div className={`form-control ${!isPost && "hidden"}`}>
+      <div className={`form-control ${!isPost && 'hidden'}`}>
         <label className="label">
           <span className="label-text">Upload Image</span>
         </label>
@@ -71,16 +70,16 @@ const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
       {/* Caption Field */}
       <div className="form-control">
         <label className="label">
-          <span className="label-text">{isPost ? "Caption" : "Thread"}</span>
+          <span className="label-text">{isPost ? 'Caption' : 'Thread'}</span>
         </label>
         <textarea
           className={`textarea textarea-bordered h-24 max-h-96 ${
-            captionError ? "textarea-error" : ""
+            captionError ? 'textarea-error' : ''
           }`}
           placeholder={
             isPost
-              ? "Write your caption here, not more than 200 characters"
-              : "Write your thread here"
+              ? 'Write your caption here, not more than 200 characters'
+              : 'Write your thread here'
           }
           value={caption}
           onChange={(e) => handleCaptionChange(e, setCaption, setCaptionError)}
@@ -97,11 +96,11 @@ const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
         <button
           type="submit"
           className={`btn btn-neutral w-full btn-sm lg:btn-md ${
-            postForUpdating ? "md:w-1/2" : "md:w-full"
+            postForUpdating ? 'md:w-1/2' : 'md:w-full'
           }`}
         >
           <ImagePlus className="mr-2" size={20} />
-          {postForUpdating ? `Update ${postForUpdating.type}` : "Post"}
+          {postForUpdating ? `Update ${postForUpdating.type}` : 'Post'}
         </button>
         {postForUpdating && (
           <button
@@ -109,8 +108,8 @@ const PostOrThreadCreationForm = ({ setUploading, isPost, setIsPost }) => {
               e.preventDefault();
               e.stopPropagation();
               setPostForUpdating(null);
-              setCaption("");
-              setImagePreview("");
+              setCaption('');
+              setImagePreview('');
             }}
             className={`btn btn-error w-full md:w-1/2 btn-sm lg:btn-md mt-2 md:mt-0 md:ml-2`}
           >

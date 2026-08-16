@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../components/sidebars/Navbar";
-import MobileBottomBar from "../components/sidebars/MobileBottomBar";
-import MobileTopBar from "../components/sidebars/MobileTopBar";
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/sidebars/Navbar';
+import MobileBottomBar from '../components/sidebars/MobileBottomBar';
+import MobileTopBar from '../components/sidebars/MobileTopBar';
 
 const Layout = () => {
   return (

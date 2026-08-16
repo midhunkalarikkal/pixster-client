@@ -1,10 +1,9 @@
-import { X } from "lucide-react";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useChatStore } from "../../store/useChatStore";
+import { X } from 'lucide-react';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useChatStore } from '../../store/useChatStore';
 
 const ChatHeader = () => {
-  const { selectedUser, setSelectedUser, messages, setLastMessage } =
-    useChatStore();
+  const { selectedUser, setSelectedUser, messages, setLastMessage } = useChatStore();
   const { onlineUsers, authUser } = useAuthStore();
 
   const handleCloseChat = () => {
@@ -18,8 +17,7 @@ const ChatHeader = () => {
       }
     };
     const userId = checkUserId(lastMessage?.senderId, lastMessage?.recieverId);
-    if (userId)
-      setLastMessage(userId, lastMessage?.text, lastMessage?.createdAt);
+    if (userId) setLastMessage(userId, lastMessage?.text, lastMessage?.createdAt);
     setSelectedUser(null);
   };
 
@@ -30,7 +28,7 @@ const ChatHeader = () => {
           <div className="avatar">
             <div className="size-8 md:size-10 rounded-full relative">
               <img
-                src={selectedUser.profilePic || "/user_avatar.jpg"}
+                src={selectedUser.profilePic || '/user_avatar.jpg'}
                 alt={selectedUser.fullName}
               />
             </div>
@@ -39,7 +37,7 @@ const ChatHeader = () => {
           <div>
             <h3 className="text-sm font-medium">{selectedUser.fullName}</h3>
             <p className="text-xs md:text-sm text-base-content/70">
-              {onlineUsers.includes(selectedUser._id) ? "Online" : "Offline"}
+              {onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}
             </p>
           </div>
         </div>

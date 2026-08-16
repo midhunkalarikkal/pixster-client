@@ -1,7 +1,7 @@
-import gsap from "gsap";
-import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
-import { pairedMessages } from "../utils/constants";
+import gsap from 'gsap';
+import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
+import { pairedMessages } from '../utils/constants';
 
 const AuthImagePattern = ({ title, subtitle }) => {
   const sendMessageRefs = useRef([]);
@@ -14,7 +14,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
       duration: 1,
       yoyo: true,
       repeat: -1,
-      ease: "sine.inOut",
+      ease: 'sine.inOut',
     });
 
     sendMessageRefs.current.forEach((ref) => {
@@ -24,7 +24,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
           duration: 2,
           yoyo: true,
           repeat: -1,
-          ease: "sine.inOut",
+          ease: 'sine.inOut',
         });
       }
     });
@@ -36,7 +36,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
           duration: 2,
           yoyo: true,
           repeat: -1,
-          ease: "sine.inOut",
+          ease: 'sine.inOut',
         });
       }
     });

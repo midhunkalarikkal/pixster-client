@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { toast } from "react-toastify";
-import { axiosInstance } from "../lib/axios";
+import { create } from 'zustand';
+import { toast } from 'react-toastify';
+import { axiosInstance } from '../lib/axios';
 
 export const usePostStore = create((set) => ({
   commentUploading: false,
@@ -33,7 +33,7 @@ export const usePostStore = create((set) => ({
   uploadComment: async (data) => {
     try {
       set({ commentUploading: true });
-      const res = await axiosInstance.post("/post/addComment", data);
+      const res = await axiosInstance.post('/post/addComment', data);
       toast.success(res.data.message);
       return res.data.comment;
     } catch (error) {
@@ -69,9 +69,7 @@ export const usePostStore = create((set) => ({
 
   likeOrDislikeComment: async (data) => {
     try {
-      const res = await axiosInstance.put(
-        `/post/likeOrDislikeComment/${data.commentId}`,
-      );
+      const res = await axiosInstance.put(`/post/likeOrDislikeComment/${data.commentId}`);
       return res.data;
     } catch (error) {
       toast.error(error.response.data.message);

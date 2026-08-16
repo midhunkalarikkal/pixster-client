@@ -1,28 +1,23 @@
-import { X } from "lucide-react";
-import { useHomeStore } from "../../store/useHomeStore";
-import { FileUpload } from "../ui/file-upload";
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { X } from 'lucide-react';
+import { useHomeStore } from '../../store/useHomeStore';
+import { FileUpload } from '../ui/file-upload';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 const StoryUploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const {
-    storyUploaderOpen,
-    storyUploading,
-    setStoryUploaderOpen,
-    uploadStory,
-  } = useHomeStore();
+  const { storyUploaderOpen, storyUploading, setStoryUploaderOpen, uploadStory } = useHomeStore();
 
   const handleUpload = async (file) => {
     if (!selectedFile) return;
     const formData = new FormData();
-    formData.append("storyImage", file);
+    formData.append('storyImage', file);
 
     try {
       await uploadStory(formData);
     } catch {
-      toast.error("story uploading error");
+      toast.error('story uploading error');
     }
   };
 
@@ -33,7 +28,7 @@ const StoryUploader = () => {
   return (
     <div
       className={`h-screen w-full bg-black/90 flex justify-center items-center ${
-        storyUploaderOpen ? "absolute" : "hidden"
+        storyUploaderOpen ? 'absolute' : 'hidden'
       }`}
     >
       <div className="w-11/12 md:w-6/12 lg:w-4/12 h-[600px] rounded-2xl shadow-lg border border-base-300 p-4 flex flex-col bg-base-100">
@@ -57,10 +52,7 @@ const StoryUploader = () => {
               <p>Story uploading, please wait</p>
             </div>
           ) : (
-            <FileUpload
-              onChange={(file) => setSelectedFile(file)}
-              onUpload={handleUpload}
-            />
+            <FileUpload onChange={(file) => setSelectedFile(file)} onUpload={handleUpload} />
           )}
         </div>
       </div>

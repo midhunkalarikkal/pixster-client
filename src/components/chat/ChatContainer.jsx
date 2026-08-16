@@ -1,10 +1,10 @@
-import ChatHeader from "./ChatHeader";
-import MessageInput from "./MessageInput";
-import { formatMessageTime } from "../../lib/utils";
-import { useEffect, useRef, useState } from "react";
-import { useChatStore } from "../../store/useChatStore";
-import { useAuthStore } from "../../store/useAuthStore";
-import MessageSkeleton from "../skeletons/MessageSkeleton";
+import ChatHeader from './ChatHeader';
+import MessageInput from './MessageInput';
+import { formatMessageTime } from '../../lib/utils';
+import { useEffect, useRef, useState } from 'react';
+import { useChatStore } from '../../store/useChatStore';
+import { useAuthStore } from '../../store/useAuthStore';
+import MessageSkeleton from '../skeletons/MessageSkeleton';
 
 const ChatContainer = () => {
   const {
@@ -28,23 +28,18 @@ const ChatContainer = () => {
     subscribeToMessages();
 
     return () => unsubscribeFromMessages();
-  }, [
-    selectedUser._id,
-    getMessages,
-    subscribeToMessages,
-    unsubscribeFromMessages,
-  ]);
+  }, [selectedUser._id, getMessages, subscribeToMessages, unsubscribeFromMessages]);
 
   useEffect(() => {
     if (messageEndRef.current && (messages || isTyping)) {
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+      messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isTyping]);
 
   useEffect(() => {
     if (!socket) return;
 
-    socket.on("typing", (data) => {
+    socket.on('typing', (data) => {
       const { fromUserId, toUserId } = data;
       if (fromUserId === selectedUser?._id && toUserId === authUser._id) {
         setMessageSenderId(fromUserId);
@@ -52,7 +47,7 @@ const ChatContainer = () => {
       }
     });
 
-    socket.on("stopTyping", (data) => {
+    socket.on('stopTyping', (data) => {
       const { fromUserId, toUserId } = data;
       if (fromUserId === selectedUser?._id && toUserId === authUser._id) {
         setIsTyping(false);
@@ -61,8 +56,8 @@ const ChatContainer = () => {
     });
 
     return () => {
-      socket.off("typing");
-      socket.off("stopTyping");
+      socket.off('typing');
+      socket.off('stopTyping');
     };
   }, [socket, selectedUser, authUser._id]);
 
@@ -76,9 +71,7 @@ const ChatContainer = () => {
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`chat ${
-                message.senderId === authUser._id ? "chat-end" : "chat-start"
-              }`}
+              className={`chat ${message.senderId === authUser._id ? 'chat-end' : 'chat-start'}`}
               ref={messageEndRef}
             >
               <div className="chat-image avatar">
@@ -86,8 +79,8 @@ const ChatContainer = () => {
                   <img
                     src={
                       message.senderId === authUser._id
-                        ? authUser.profilePic || "/user_avatar.jpg"
-                        : selectedUser.profilePic || "/user_avatar.jpg"
+                        ? authUser.profilePic || '/user_avatar.jpg'
+                        : selectedUser.profilePic || '/user_avatar.jpg'
                     }
                     alt="profile pic"
                   />
@@ -102,9 +95,7 @@ const ChatContainer = () => {
                     className="sm:max-w-[200px] rounded-md mb-2"
                   />
                 )}
-                {message.text && (
-                  <p className="text-[13px] md:text-[15px]">{message.text}</p>
-                )}
+                {message.text && <p className="text-[13px] md:text-[15px]">{message.text}</p>}
                 <time className="text-[10px] md:text-xs opacity-50 ml-auto">
                   {formatMessageTime(message.createdAt)}
                 </time>

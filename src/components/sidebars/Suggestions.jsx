@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { Users } from "lucide-react";
-import AuthUserTab from "../AuthUserTab";
-import UserTab from "../../components/UserTab";
-import { useNavigate } from "react-router-dom";
-import UserBarSkeleton from "../skeletons/UserBarSkeleton";
-import { useSearchStore } from "../../store/useSearchStore";
-import { useSuggestionStore } from "../../store/useSuggestionStore";
+import { useEffect } from 'react';
+import { Users } from 'lucide-react';
+import AuthUserTab from '../AuthUserTab';
+import UserTab from '../../components/UserTab';
+import { useNavigate } from 'react-router-dom';
+import UserBarSkeleton from '../skeletons/UserBarSkeleton';
+import { useSearchStore } from '../../store/useSearchStore';
+import { useSuggestionStore } from '../../store/useSuggestionStore';
 
 const Suggestions = () => {
   const navigate = useNavigate();
@@ -20,11 +20,9 @@ const Suggestions = () => {
   const handlefollowConnection = async (user, e) => {
     e.preventDefault();
     e.stopPropagation();
-    const res = await sendConnectionRequest(user._id, "requested");
+    const res = await sendConnectionRequest(user._id, 'requested');
     if (res.status === 200) {
-      const updatedList = suggestions.filter(
-        (item) => item._id !== res.data.userData._id,
-      );
+      const updatedList = suggestions.filter((item) => item._id !== res.data.userData._id);
       setSuggestions(updatedList);
     }
   };

@@ -1,5 +1,5 @@
-import MediaGrid from "../components/MediaGrid";
-import SearchSidebar from "../components/sidebars/SearchSidebar";
+import MediaGrid from '../components/MediaGrid';
+import SearchSidebar from '../components/sidebars/SearchSidebar';
 
 const SearchPage = () => {
   return (

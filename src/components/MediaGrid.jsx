@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useSearchStore } from "../store/useSearchStore";
+import { useEffect, useState } from 'react';
+import { useSearchStore } from '../store/useSearchStore';
 
 const MediaGrid = () => {
   const [posts, setPosts] = useState([]);
@@ -34,7 +34,7 @@ const MediaGrid = () => {
               return (
                 <div
                   key={index}
-                  className={`skeleton ${isBig ? "lg:col-span-2 lg:row-span-2" : ""}`}
+                  className={`skeleton ${isBig ? 'lg:col-span-2 lg:row-span-2' : ''}`}
                 />
               );
             })}
@@ -45,19 +45,17 @@ const MediaGrid = () => {
               return (
                 <img
                   key={post.postId}
-                  src={post.media || "/noImg.png"}
+                  src={post.media || '/noImg.png'}
                   alt="Post"
                   className={`${
-                    isBig ? "col-span-2 row-span-2" : ""
+                    isBig ? 'col-span-2 row-span-2' : ''
                   } object-cover w-full h-full hover:object-contain`}
                 />
               );
             })}
 
           {error && (
-            <p className="col-span-full text-center mt-4">
-              Server is busy, Grid will load shortly
-            </p>
+            <p className="col-span-full text-center mt-4">Server is busy, Grid will load shortly</p>
           )}
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export const useGeminiStore = create(
   persist(
@@ -12,8 +12,7 @@ export const useGeminiStore = create(
 
       resetRequestCount: () => set({ requestCount: 0 }),
 
-      incrementRequestCount: () =>
-        set((state) => ({ requestCount: state.requestCount + 1 })),
+      incrementRequestCount: () => set((state) => ({ requestCount: state.requestCount + 1 })),
 
       setLastRequestTime: (time) => set({ lastRequestTime: time }),
 
@@ -25,7 +24,7 @@ export const useGeminiStore = create(
     }),
 
     {
-      name: "gemini-store",
+      name: 'gemini-store',
       partialize: (state) => ({
         geminiCaptions: state.geminiCaptions,
         requestCount: state.requestCount,

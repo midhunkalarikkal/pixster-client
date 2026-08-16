@@ -1,6 +1,6 @@
-import MessageSampleForSettings from "../components/settings/MessageSampleForSettings";
-import ProfileSettings from "../components/settings/ProfileSettings";
-import ThemeChangerForSettings from "../components/settings/ThemeChangerForSettings";
+import MessageSampleForSettings from '../components/settings/MessageSampleForSettings';
+import ProfileSettings from '../components/settings/ProfileSettings';
+import ThemeChangerForSettings from '../components/settings/ThemeChangerForSettings';
 
 const SettingsPage = () => {
   return (

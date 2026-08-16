@@ -1,8 +1,8 @@
-import Story from "./Story";
-import { Plus, Trash } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useHomeStore } from "../../store/useHomeStore";
-import StorySkeleton from "../skeletons/StorySkeleton";
+import Story from './Story';
+import { Plus, Trash } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useHomeStore } from '../../store/useHomeStore';
+import StorySkeleton from '../skeletons/StorySkeleton';
 
 const Stories = () => {
   const [storyHover, setStoryHover] = useState(false);
@@ -44,7 +44,7 @@ const Stories = () => {
                 onMouseLeave={() => setStoryHover(false)}
               >
                 <img
-                  src={myStory.img || "/noImg.png"}
+                  src={myStory.img || '/noImg.png'}
                   className="h-14 w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full object-cover"
                 />
                 {storyHover && (
@@ -78,16 +78,10 @@ const Stories = () => {
           <p className="text-xs">My Story</p>
         </div>
         {userStoriesLoading
-          ? Array.from({ length: 15 }).map((_, index) => (
-              <StorySkeleton key={index} />
-            ))
+          ? Array.from({ length: 15 }).map((_, index) => <StorySkeleton key={index} />)
           : usersStories && usersStories.length > 0
             ? usersStories.map((story) => (
-                <Story
-                  key={story.userId}
-                  image={story.img}
-                  userName={story.userName}
-                />
+                <Story key={story.userId} image={story.img} userName={story.userName} />
               ))
             : null}
       </div>
