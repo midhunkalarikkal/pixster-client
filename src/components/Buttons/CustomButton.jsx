@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import { memo } from "react";
+import PropTypes from 'prop-types';
+import { memo } from 'react';
 
 const CustomButton = ({ text, onClick }) => {
   return (
@@ -11,9 +11,7 @@ const CustomButton = ({ text, onClick }) => {
         <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
         <span className="relative block px-6 py-1 md:py-2 rounded-xl bg-base-300">
           <div className="relative flex items-center space-x-2 justify-center">
-            <span className="transition-all duration-500 group-hover:translate-x-1">
-              {text}
-            </span>
+            <span className="transition-all duration-500 group-hover:translate-x-1">{text}</span>
           </div>
         </span>
       </button>

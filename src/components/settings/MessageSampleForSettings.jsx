@@ -1,5 +1,5 @@
-import { Send } from "lucide-react";
-import { PREVIEW_MESSAGES } from "../../utils/constants";
+import { Send } from 'lucide-react';
+import { PREVIEW_MESSAGES } from '../../utils/constants';
 
 const MessageSampleForSettings = () => {
   return (
@@ -25,29 +25,19 @@ const MessageSampleForSettings = () => {
                 {PREVIEW_MESSAGES.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${
-                      message.isSent ? "justify-end" : "justify-start"
-                    }`}
+                    className={`flex ${message.isSent ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
                       className={`
                           max-w-[80%] rounded-xl p-3 shadow-sm
-                          ${
-                            message.isSent
-                              ? "bg-primary text-primary-content"
-                              : "bg-base-200"
-                          }
+                          ${message.isSent ? 'bg-primary text-primary-content' : 'bg-base-200'}
                         `}
                     >
                       <p className="text-sm">{message.content}</p>
                       <p
                         className={`
                             text-[10px] mt-1.5
-                            ${
-                              message.isSent
-                                ? "text-primary-content/70"
-                                : "text-base-content/70"
-                            }
+                            ${message.isSent ? 'text-primary-content/70' : 'text-base-content/70'}
                           `}
                       >
                         12:00 PM

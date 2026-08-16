@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useSearchStore } from "../../store/useSearchStore";
-import { Home, LogOut, PlusSquare, Search } from "lucide-react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useSearchStore } from '../../store/useSearchStore';
+import { Home, LogOut, PlusSquare, Search } from 'lucide-react';
 
 const MobileBottomBar = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const MobileBottomBar = () => {
   const handleProfileClick = async (userId, e) => {
     e.preventDefault();
     await getSearchSelectedUser(userId);
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (
@@ -22,15 +22,15 @@ const MobileBottomBar = () => {
             <LogOut className="size-5" />
           </button>
 
-          <Link to={"/"} className={`btn bg-base-100 border-0`}>
+          <Link to={'/'} className={`btn bg-base-100 border-0`}>
             <Home className="size-5" />
           </Link>
 
-          <Link to={"/createPost"} className={`btn bg-base-100 border-0`}>
+          <Link to={'/createPost'} className={`btn bg-base-100 border-0`}>
             <PlusSquare className="size-5" />
           </Link>
 
-          <Link to={"/search"} className={`btn bg-base-100 border-0`}>
+          <Link to={'/search'} className={`btn bg-base-100 border-0`}>
             <Search className="size-5" />
           </Link>
 
@@ -38,10 +38,7 @@ const MobileBottomBar = () => {
             className={`btn bg-base-100 border-0`}
             onClick={(e) => handleProfileClick(authUser._id, e)}
           >
-            <img
-              src={authUser?.profilePic || "/user_avatar.jpg"}
-              className="size-6 rounded-full"
-            />
+            <img src={authUser?.profilePic || '/user_avatar.jpg'} className="size-6 rounded-full" />
           </button>
         </div>
       )}

@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { useAuthStore } from "./useAuthStore";
+import { create } from 'zustand';
+import { useAuthStore } from './useAuthStore';
 
 export const useAuthFormStore = create((set, get) => ({
   loginForm: true,

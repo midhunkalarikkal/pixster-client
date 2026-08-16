@@ -1,10 +1,10 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { toast } from "react-toastify";
-import { useProfileStore } from "../../store/useProfileStore";
-import { Edit, Heart, MessageCircleMore, Trash } from "lucide-react";
-import ConfirmationDialog from "../ConfirmationDialog";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useProfileStore } from '../../store/useProfileStore';
+import { Edit, Heart, MessageCircleMore, Trash } from 'lucide-react';
+import ConfirmationDialog from '../ConfirmationDialog';
+import { useNavigate } from 'react-router-dom';
 
 const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
 
   const confirmDelete = async (id) => {
     if (!id) {
-      toast.error("Something went wrong.");
+      toast.error('Something went wrong.');
       return;
     }
     setDeletingIds(new Set(deletingIds.add(id)));
 
     const res = await deletePost(id);
     if (res && res.status === 200) {
-      toast.success("Thread deleted successfully.");
+      toast.success('Thread deleted successfully.');
       setDeleteTarget(null);
       onDelete(id);
       setDeletingIds(new Set([...deletingIds].filter((i) => i !== id)));
@@ -31,21 +31,18 @@ const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
 
   const getUpdateThread = (thread) => {
     if (!thread) {
-      toast.error("Something wnet wrong.");
+      toast.error('Something wnet wrong.');
       return;
     }
     setPostForUpdating(thread);
-    navigate("/createPost");
+    navigate('/createPost');
   };
 
   return (
     <div className="w-full">
       <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 p-[2px] gap-1">
         {threads.map((thread) => (
-          <div
-            key={thread._id}
-            className="relative overflow-hidden group hover:cursor-pointer"
-          >
+          <div key={thread._id} className="relative overflow-hidden group hover:cursor-pointer">
             {deletingIds.has(thread._id) ? (
               <div className="h-96 w-full flex justify-center items-center">
                 <span className="loading loading-bars loading-md"></span>

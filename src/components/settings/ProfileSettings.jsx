@@ -1,36 +1,19 @@
-import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
-import { canPerformAction } from "../../utils/helpers";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useProfileStore } from "../../store/useProfileStore";
-import {
-  Camera,
-  Loader2,
-  LockIcon,
-  LockOpen,
-  Mail,
-  Text,
-  User,
-} from "lucide-react";
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+import { canPerformAction } from '../../utils/helpers';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useProfileStore } from '../../store/useProfileStore';
+import { Camera, Loader2, LockIcon, LockOpen, Mail, Text, User } from 'lucide-react';
 
 const ProfileSettings = () => {
-  const [about, setAbout] = useState("");
+  const [about, setAbout] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [aboutUpdating, setAboutUpdating] = useState(false);
 
-  const {
-    authUser,
-    isUpdatingProfile,
-    updateProfileImage,
-    removeProfileImage,
-    changeProfileType,
-  } = useAuthStore();
-  const {
-    updateAbout,
-    accountTypeChangedTime,
-    setAccountTypeChangedTime,
-    changeAccountType,
-  } = useProfileStore();
+  const { authUser, isUpdatingProfile, updateProfileImage, removeProfileImage, changeProfileType } =
+    useAuthStore();
+  const { updateAbout, accountTypeChangedTime, setAccountTypeChangedTime, changeAccountType } =
+    useProfileStore();
 
   useEffect(() => {
     setAbout(authUser?.about);
@@ -41,7 +24,7 @@ const ProfileSettings = () => {
     if (!file) return;
 
     const formData = new FormData();
-    formData.append("profilePic", file);
+    formData.append('profilePic', file);
 
     setSelectedImage(URL.createObjectURL(file));
     await updateProfileImage(formData);
@@ -49,7 +32,7 @@ const ProfileSettings = () => {
 
   const handleRemoveProfileImage = () => {
     if (!authUser.profilePic) {
-      toast.info("Your profile Image is already removed.");
+      toast.info('Your profile Image is already removed.');
       return;
     }
     removeProfileImage();
@@ -57,10 +40,10 @@ const ProfileSettings = () => {
 
   const handleUpdateAbout = async () => {
     if (authUser.about === about) {
-      toast.error("You didnt changed your about");
+      toast.error('You didnt changed your about');
       return;
     } else if (about.length < 1 || about.length > 200) {
-      toast.info("Please ensure the length less than 200");
+      toast.info('Please ensure the length less than 200');
       return;
     }
     setAboutUpdating(true);
@@ -77,9 +60,7 @@ const ProfileSettings = () => {
     e.stopPropagation();
 
     if (!canPerformAction(accountTypeChangedTime)) {
-      const remainingTime = Math.ceil(
-        (3600000 - (Date.now() - accountTypeChangedTime)) / 60000,
-      );
+      const remainingTime = Math.ceil((3600000 - (Date.now() - accountTypeChangedTime)) / 60000);
       toast.info(`Please wait ${remainingTime} minute(s) before trying again.`);
       return;
     }
@@ -96,9 +77,7 @@ const ProfileSettings = () => {
     <>
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-semibold">Profile</h2>
-        <p className="text-sm text-base-content/70">
-          You can update the profile image from here
-        </p>
+        <p className="text-sm text-base-content/70">You can update the profile image from here</p>
       </div>
 
       <div className="mx-auto md:p-4 md:py-4 bg-base-200 rounded-lg shadow-lg border border-base-300">
@@ -108,11 +87,7 @@ const ProfileSettings = () => {
               <div className="flex flex-col items-center gap-4">
                 <div className="relative">
                   <img
-                    src={
-                      selectedImage ||
-                      authUser?.profilePic ||
-                      "/user_avatar.jpg"
-                    }
+                    src={selectedImage || authUser?.profilePic || '/user_avatar.jpg'}
                     alt="Profile"
                     className="size-24 md:size-32 rounded-full object-cover border-4 "
                   />
@@ -123,11 +98,7 @@ const ProfileSettings = () => {
                           bg-base-content hover:scale-105
                           p-2 rounded-full cursor-pointer 
                           transition-all duration-200
-                          ${
-                            isUpdatingProfile
-                              ? "animate-pulse pointer-events-none"
-                              : ""
-                          }
+                          ${isUpdatingProfile ? 'animate-pulse pointer-events-none' : ''}
                         `}
                   >
                     <Camera className="w-5 h-5 text-base-200" />
@@ -143,8 +114,8 @@ const ProfileSettings = () => {
                 </div>
                 <p className="text-sm text-zinc-400 hidden">
                   {isUpdatingProfile
-                    ? "Uploading..."
-                    : "Click the camera icon to update your photo"}
+                    ? 'Uploading...'
+                    : 'Click the camera icon to update your photo'}
                 </p>
               </div>
             </div>
@@ -212,7 +183,7 @@ const ProfileSettings = () => {
                   Account Type
                 </div>
                 <p className="px-4 py-1.5 md:py-2.5 bg-base-200 rounded-lg border text-sm md:text-md">
-                  {authUser?.public ? "Public" : "Private"}
+                  {authUser?.public ? 'Public' : 'Private'}
                 </p>
               </div>
             </div>
@@ -223,29 +194,19 @@ const ProfileSettings = () => {
                 <span className="flex items-center justify-between py-1 border-b border-zinc-700"></span>
                 <div className="flex items-center justify-between py-2">
                   <span>Update About</span>
-                  <button
-                    className="btn btn-sm rounded-lg"
-                    onClick={handleUpdateAbout}
-                  >
+                  <button className="btn btn-sm rounded-lg" onClick={handleUpdateAbout}>
                     Update
                   </button>
                 </div>
                 <div className="flex items-center justify-between py-2">
                   <span>Remove profile Image</span>
-                  <button
-                    className="btn btn-sm rounded-lg"
-                    onClick={handleRemoveProfileImage}
-                  >
+                  <button className="btn btn-sm rounded-lg" onClick={handleRemoveProfileImage}>
                     Remove
                   </button>
                 </div>
 
                 <div className="flex items-center justify-between py-2">
-                  <span>
-                    {authUser.public
-                      ? "Make account private"
-                      : "Make account public"}
-                  </span>
+                  <span>{authUser.public ? 'Make account private' : 'Make account public'}</span>
                   <input
                     type="checkbox"
                     className="toggle transition duration-300 rounded-lg"
@@ -262,7 +223,7 @@ const ProfileSettings = () => {
                 <span className="flex items-center justify-between py-1 border-b border-zinc-700"></span>
                 <div className="flex items-center justify-between">
                   <span>Member Since</span>
-                  <span>{authUser.createdAt?.split("T")[0]}</span>
+                  <span>{authUser.createdAt?.split('T')[0]}</span>
                 </div>
                 <div className="flex items-center justify-between py-2">
                   <span>Account Status</span>

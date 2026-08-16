@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import InputWithLabel from "./InputWithLabel";
-import { useAuthStore } from "../../store/useAuthStore";
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import InputWithLabel from './InputWithLabel';
+import { useAuthStore } from '../../store/useAuthStore';
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    fullName: "",
-    userName: "",
-    email: "",
-    password: "",
+    fullName: '',
+    userName: '',
+    email: '',
+    password: '',
   });
 
   const { signup, loading } = useAuthStore();
@@ -56,7 +56,7 @@ const SignUpForm = () => {
 
       <InputWithLabel
         label="Password"
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         name="password"
         value={formData.password}
         onChange={handleChange}
@@ -66,18 +66,14 @@ const SignUpForm = () => {
         setShowPassword={setShowPassword}
       />
 
-      <button
-        type="submit"
-        className="btn btn-primary w-full"
-        disabled={loading}
-      >
+      <button type="submit" className="btn btn-primary w-full" disabled={loading}>
         {loading ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
             Loading...
           </>
         ) : (
-          "Sign Up"
+          'Sign Up'
         )}
       </button>
     </form>

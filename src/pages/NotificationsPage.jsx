@@ -1,26 +1,22 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
-import { useSearchStore } from "../store/useSearchStore";
-import NotificationBar from "../components/NotificationBar";
-import Suggestions from "../components/sidebars/Suggestions";
-import { useNotificationStore } from "../store/useNotificationStores";
-import { useNotificationsSocketEvent } from "../utils/hooks/useNotificationsSocketEvents";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
+import { useSearchStore } from '../store/useSearchStore';
+import NotificationBar from '../components/NotificationBar';
+import Suggestions from '../components/sidebars/Suggestions';
+import { useNotificationStore } from '../store/useNotificationStores';
+import { useNotificationsSocketEvent } from '../utils/hooks/useNotificationsSocketEvents';
 
 const NotificationsPage = () => {
   const navigate = useNavigate();
   const { socket } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();
-  const {
-    notifications,
-    notificationsLoading,
-    getNotifications,
-    setNotifications,
-  } = useNotificationStore();
+  const { notifications, notificationsLoading, getNotifications, setNotifications } =
+    useNotificationStore();
 
   const handleViewUser = (id) => {
     getSearchSelectedUser(id);
-    navigate("/profile");
+    navigate('/profile');
   };
 
   useEffect(() => {

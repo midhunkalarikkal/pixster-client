@@ -1,14 +1,14 @@
-import { create } from "zustand";
-import { toast } from "react-toastify";
-import { io } from "socket.io-client";
-import { axiosInstance } from "../lib/axios";
-import { useAuthFormStore } from "./useAuthFormStore";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { useGeminiStore } from "./useGeminiStore";
+import { create } from 'zustand';
+import { toast } from 'react-toastify';
+import { io } from 'socket.io-client';
+import { axiosInstance } from '../lib/axios';
+import { useAuthFormStore } from './useAuthFormStore';
+import { persist, createJSONStorage } from 'zustand/middleware';
+import { useGeminiStore } from './useGeminiStore';
 // import { exportKeys, generateKeys } from "../utils/helpers";
 
 const BASE_URL =
-  import.meta.env.MODE === "development"
+  import.meta.env.MODE === 'development'
     ? import.meta.env.VITE_BACKEND_URL_DEV
     : import.meta.env.VITE_BACKEND_URL_PROD;
 
@@ -27,7 +27,7 @@ export const useAuthStore = create(
         const { authUser } = get();
         try {
           if (!authUser) return;
-          await axiosInstance.get("/auth/check");
+          await axiosInstance.get('/auth/check');
           // const res = await axiosInstance.get("/auth/check");
           // set({ authUser: res.data });
           get().connectSocket();
@@ -43,7 +43,7 @@ export const useAuthStore = create(
         set({ loading: true });
         set({ authEmail: data.email });
         try {
-          const res = await axiosInstance.post("/auth/signup", data);
+          const res = await axiosInstance.post('/auth/signup', data);
           handleGotoVerifyOtp();
           startTimer();
           toast.success(res.data.message);
@@ -55,12 +55,8 @@ export const useAuthStore = create(
       },
 
       verifyOtp: async (data) => {
-        const {
-          stopTimer,
-          forgotPassword,
-          handleGotoResetPassword,
-          handleGotoLogin,
-        } = useAuthFormStore.getState();
+        const { stopTimer, forgotPassword, handleGotoResetPassword, handleGotoLogin } =
+          useAuthFormStore.getState();
         set({ loading: true });
         try {
           // const {publicKey, privateKey} = await generateKeys();
@@ -70,7 +66,7 @@ export const useAuthStore = create(
           //   publicKey: keyData.publicKey,
           //   privateKey: keyData.privateKey,
           // });
-          const res = await axiosInstance.post("/auth/verifyOtp", data);
+          const res = await axiosInstance.post('/auth/verifyOtp', data);
           stopTimer();
           toast.success(res.data.message);
           if (forgotPassword) {
@@ -90,10 +86,10 @@ export const useAuthStore = create(
         set({ loading: true });
         set({ authEmail: data.email });
         try {
-          const res = await axiosInstance.post("/auth/login", data);
+          const res = await axiosInstance.post('/auth/login', data);
           set({ authUser: res.data });
           set({ authEmail: null });
-          toast.success("Logged in successfully.");
+          toast.success('Logged in successfully.');
           get().connectSocket();
         } catch (error) {
           toast.error(error?.response?.data?.message);
@@ -110,7 +106,7 @@ export const useAuthStore = create(
         }
         set({ loading: true });
         try {
-          const res = await axiosInstance.post("/auth/resendOtp", data);
+          const res = await axiosInstance.post('/auth/resendOtp', data);
           return res.data;
         } catch (error) {
           toast.error(error.response.data.message);
@@ -122,7 +118,7 @@ export const useAuthStore = create(
       updatePassword: async (data) => {
         set({ loading: true });
         try {
-          const res = await axiosInstance.post("/auth/resetPassword", data);
+          const res = await axiosInstance.post('/auth/resetPassword', data);
           return res.data;
         } catch (error) {
           toast.error(error.response.data.message);
@@ -134,9 +130,9 @@ export const useAuthStore = create(
       logout: async () => {
         const { setGeminiCaptions } = useGeminiStore.getState();
         try {
-          await axiosInstance.post("/auth/logout");
+          await axiosInstance.post('/auth/logout');
           set({ authUser: null });
-          toast.success("Logged out successfully.");
+          toast.success('Logged out successfully.');
           get().disconnectSocket();
           setGeminiCaptions([]);
         } catch (error) {
@@ -147,9 +143,9 @@ export const useAuthStore = create(
       updateProfileImage: async (data) => {
         set({ isUpdatingProfile: true });
         try {
-          const res = await axiosInstance.put("/auth/update-profile", data);
+          const res = await axiosInstance.put('/auth/update-profile', data);
           set({ authUser: res.data });
-          toast.success("Profile image updated successfully");
+          toast.success('Profile image updated successfully');
         } catch (error) {
           toast.error(error.response.data.message);
         } finally {
@@ -160,9 +156,9 @@ export const useAuthStore = create(
       removeProfileImage: async () => {
         set({ isUpdatingProfile: true });
         try {
-          const res = await axiosInstance.put("/auth/remove-profile");
+          const res = await axiosInstance.put('/auth/remove-profile');
           set({ authUser: res.data });
-          toast.success("Profile image removed successfully");
+          toast.success('Profile image removed successfully');
         } catch (error) {
           toast.error(error.response.data.message);
         } finally {
@@ -218,7 +214,7 @@ export const useAuthStore = create(
     }),
 
     {
-      name: "auth-store",
+      name: 'auth-store',
       partialize: (state) => ({
         authUser: state.authUser,
         authEmail: state.authEmail,

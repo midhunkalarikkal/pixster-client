@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const AuthPeopleCard = ({ floatingRef }) => {
   return (
@@ -54,9 +54,7 @@ const AuthPeopleCard = ({ floatingRef }) => {
           </div>
         </div>
 
-        <p className="mt-2 text-xs text-base-content/50">
-          Your people are here
-        </p>
+        <p className="mt-2 text-xs text-base-content/50">Your people are here</p>
       </div>
     </div>
   );

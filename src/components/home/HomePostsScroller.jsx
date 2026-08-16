@@ -1,10 +1,10 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-import { formatDistanceToNow } from "date-fns";
-import { useNavigate } from "react-router-dom";
-import { usePostStore } from "../../store/usePostStore";
-import { useSearchStore } from "../../store/useSearchStore";
-import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
+import { usePostStore } from '../../store/usePostStore';
+import { useSearchStore } from '../../store/useSearchStore';
+import { Bookmark, Ellipsis, Heart, MessageCircle, Send } from 'lucide-react';
 
 const HomePostsScroller = ({ post }) => {
   const navigate = useNavigate();
@@ -14,12 +14,8 @@ const HomePostsScroller = ({ post }) => {
   const [postCommentsCount, setPostCommentsCount] = useState(0);
 
   const { getSearchSelectedUser } = useSearchStore();
-  const {
-    likeOrDislikePost,
-    saveRemovePost,
-    setCommentUploaderOpen,
-    setSelectedPostId,
-  } = usePostStore();
+  const { likeOrDislikePost, saveRemovePost, setCommentUploaderOpen, setSelectedPostId } =
+    usePostStore();
 
   useEffect(() => {
     if (post) {
@@ -63,7 +59,7 @@ const HomePostsScroller = ({ post }) => {
 
   const handleUserTabClick = async (userId) => {
     await getSearchSelectedUser(userId);
-    navigate("/profile");
+    navigate('/profile');
   };
 
   return (
@@ -72,18 +68,13 @@ const HomePostsScroller = ({ post }) => {
       <div className="flex justify-between p-2 items-center">
         <div className="flex space-x-2 items-center">
           <img
-            src={post?.profilePic || "/user_avatar.jpg"}
+            src={post?.profilePic || '/user_avatar.jpg'}
             alt="User avatar"
             className="h-8 w-8 lg:h-10 lg:w-10 rounded-full"
             onClick={() => handleUserTabClick(post?._id)}
           />
-          <div
-            className="flex flex-col space-y-1"
-            onClick={() => handleUserTabClick(post?._id)}
-          >
-            <h5 className="font-semibold text-sm lg:text-md">
-              {post?.userName}
-            </h5>
+          <div className="flex flex-col space-y-1" onClick={() => handleUserTabClick(post?._id)}>
+            <h5 className="font-semibold text-sm lg:text-md">{post?.userName}</h5>
           </div>
         </div>
         <Ellipsis className="cursor-pointer" />
@@ -91,7 +82,7 @@ const HomePostsScroller = ({ post }) => {
 
       {/* Post media */}
       <div
-        className={`md:h-[28rem] lg:h-[32rem] w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
+        className={`md:h-[28rem] lg:h-[32rem] w-full overflow-hidden bg-black ${post?.userPostDetails?.type === 'Thread' && 'hidden'}`}
       >
         <img
           src={post?.userPostDetails?.media}
@@ -102,7 +93,7 @@ const HomePostsScroller = ({ post }) => {
 
       {/* Thread */}
       <div
-        className={`h-auto p-6 border-[1px] border-base-300 rounded-md w-full overflow-hidden bg-black ${post?.userPostDetails?.type === "Post" && "hidden"}`}
+        className={`h-auto p-6 border-[1px] border-base-300 rounded-md w-full overflow-hidden bg-black ${post?.userPostDetails?.type === 'Post' && 'hidden'}`}
       >
         <p>{post?.userPostDetails?.content}</p>
       </div>
@@ -113,7 +104,7 @@ const HomePostsScroller = ({ post }) => {
           <div className="flex space-x-4 items-center">
             <span className="flex items-center space-x-1">
               <Heart
-                className={`cursor-pointer size-6 ${postLiked && "fill-red-500 text-red-500"}`}
+                className={`cursor-pointer size-6 ${postLiked && 'fill-red-500 text-red-500'}`}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -138,7 +129,7 @@ const HomePostsScroller = ({ post }) => {
             </span>
           </div>
           <Bookmark
-            className={`cursor-pointer size-6 ${postSaved && "fill-blue-400 text-blue-400"} ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
+            className={`cursor-pointer size-6 ${postSaved && 'fill-blue-400 text-blue-400'} ${post?.userPostDetails?.type === 'Thread' && 'hidden'}`}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -146,9 +137,7 @@ const HomePostsScroller = ({ post }) => {
             }}
           />
         </div>
-        <p
-          className={`text-sm ${post?.userPostDetails?.type === "Thread" && "hidden"}`}
-        >
+        <p className={`text-sm ${post?.userPostDetails?.type === 'Thread' && 'hidden'}`}>
           {post?.userPostDetails?.content}
         </p>
         <p className="text-xs text-gray-500">
@@ -172,8 +161,7 @@ HomePostsScroller.propTypes = {
       content: PropTypes.string.isRequired,
       type: PropTypes.string,
       createdAt: PropTypes.string.isRequired,
-      likes: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
+      likes: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       likedByCurrentUser: PropTypes.bool.isRequired,
       savedByCurrentUser: PropTypes.bool.isRequired,
       commentsCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

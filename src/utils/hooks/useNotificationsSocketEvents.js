@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useNotificationsSocketEvent = (socket, setNotifications) => {
   useEffect(() => {
@@ -6,15 +6,15 @@ export const useNotificationsSocketEvent = (socket, setNotifications) => {
       setNotifications((prev) => [data.notification, ...prev]);
     };
 
-    socket?.on("followRequest", handlePushNewNotification);
-    socket?.on("postLikeSocket", handlePushNewNotification);
-    socket?.on("commentedOnPost", handlePushNewNotification);
-    socket?.on("commentLiked", handlePushNewNotification);
+    socket?.on('followRequest', handlePushNewNotification);
+    socket?.on('postLikeSocket', handlePushNewNotification);
+    socket?.on('commentedOnPost', handlePushNewNotification);
+    socket?.on('commentLiked', handlePushNewNotification);
     return () => {
-      socket?.off("followRequest", handlePushNewNotification);
-      socket?.off("postLikeSocket", handlePushNewNotification);
-      socket?.off("commentedOnPost", handlePushNewNotification);
-      socket?.off("commentLiked", handlePushNewNotification);
+      socket?.off('followRequest', handlePushNewNotification);
+      socket?.off('postLikeSocket', handlePushNewNotification);
+      socket?.off('commentedOnPost', handlePushNewNotification);
+      socket?.off('commentLiked', handlePushNewNotification);
     };
   }, [socket, setNotifications]);
 };

@@ -1,15 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useSearchStore } from "../../store/useSearchStore";
-import {
-  BellIcon,
-  Home,
-  LogOut,
-  MessageCircle,
-  PlusSquare,
-  Search,
-  Settings,
-} from "lucide-react";
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useSearchStore } from '../../store/useSearchStore';
+import { BellIcon, Home, LogOut, MessageCircle, PlusSquare, Search, Settings } from 'lucide-react';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -31,13 +23,11 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-2.5 hover:opacity-80 transition-all ml-4 my-6"
             >
-              <h3 className="text-2xl font-bold italic hidden lg:block">
-                Pixster
-              </h3>
+              <h3 className="text-2xl font-bold italic hidden lg:block">Pixster</h3>
               <h3 className="text-2xl font-bold italic block lg:hidden">P</h3>
             </Link>
 
-            <Link to={"/"} className={`flex btn bg-base-100 border-0`}>
+            <Link to={'/'} className={`flex btn bg-base-100 border-0`}>
               <Home className="size-6" />
               <span className="hidden lg:block">Home</span>
             </Link>
@@ -47,32 +37,29 @@ const Navbar = () => {
               onClick={(e) => handleUserTabClick(authUser._id, e)}
             >
               <img
-                src={authUser.profilePic || "/user_avatar.jpg"}
+                src={authUser.profilePic || '/user_avatar.jpg'}
                 className="size-6 rounded-full"
               />
               <span className="hidden lg:block">Profile</span>
             </button>
 
-            <Link to={"/chat"} className={`flex btn bg-base-100 border-0`}>
+            <Link to={'/chat'} className={`flex btn bg-base-100 border-0`}>
               <MessageCircle className="size-6" />
               <span className="hidden lg:block">Chat</span>
             </Link>
 
-            <Link
-              to={"/createPost"}
-              className={`flex btn bg-base-100 border-0`}
-            >
+            <Link to={'/createPost'} className={`flex btn bg-base-100 border-0`}>
               <PlusSquare className="size-6" />
               <span className="hidden lg:block">Create</span>
             </Link>
 
-            <Link to={"/search"} className={`flex btn bg-base-100 border-0`}>
+            <Link to={'/search'} className={`flex btn bg-base-100 border-0`}>
               <Search className="size-6" />
               <span className="hidden lg:block">Search</span>
             </Link>
 
             <Link
-              to={"/notifications"}
+              to={'/notifications'}
               onClick={() => setSearchSelectedUserNull()}
               className={`flex btn bg-base-100 border-0`}
             >
@@ -80,7 +67,7 @@ const Navbar = () => {
               <span className="hidden lg:block">Notifications</span>
             </Link>
 
-            <Link to={"/settings"} className={`flex btn bg-base-100 border-0`}>
+            <Link to={'/settings'} className={`flex btn bg-base-100 border-0`}>
               <Settings className="size-6" />
               <span className="hidden lg:block">Settings</span>
             </Link>

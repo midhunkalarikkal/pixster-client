@@ -1,7 +1,7 @@
-import { memo } from "react";
-import PropTypes from "prop-types";
-import { AlignJustify } from "lucide-react";
-import { useProfileStore } from "../../store/useProfileStore";
+import { memo } from 'react';
+import PropTypes from 'prop-types';
+import { AlignJustify } from 'lucide-react';
+import { useProfileStore } from '../../store/useProfileStore';
 
 const ProfileHeadDropdown = ({
   authUserId,
@@ -15,7 +15,7 @@ const ProfileHeadDropdown = ({
   const isHidden = authUserId !== userId;
 
   return (
-    <div className={`flex justify-start ${isHidden ? "hidden" : ""}`}>
+    <div className={`flex justify-start ${isHidden ? 'hidden' : ''}`}>
       <div className="dropdown">
         <div tabIndex={0} role="button" className="m-1 rounded-lg">
           <AlignJustify />

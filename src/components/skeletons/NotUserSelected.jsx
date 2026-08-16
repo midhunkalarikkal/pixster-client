@@ -6,10 +6,7 @@ const NotUserSelected = () => {
           {Array.from({ length: 30 }).map((_, index) => {
             const isBig = index % 7 === 0;
             return (
-              <div
-                key={index}
-                className={`skeleton ${isBig ? "col-span-2 row-span-2" : ""}`}
-              />
+              <div key={index} className={`skeleton ${isBig ? 'col-span-2 row-span-2' : ''}`} />
             );
           })}
         </div>

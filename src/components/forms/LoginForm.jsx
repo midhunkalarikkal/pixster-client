@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import InputWithLabel from "./InputWithLabel";
-import { useAuthStore } from "../../store/useAuthStore";
-import { useAuthFormStore } from "../../store/useAuthFormStore";
+import { useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import InputWithLabel from './InputWithLabel';
+import { useAuthStore } from '../../store/useAuthStore';
+import { useAuthFormStore } from '../../store/useAuthFormStore';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const { login, loading } = useAuthStore();
@@ -38,7 +38,7 @@ const LoginForm = () => {
 
       <InputWithLabel
         label="Password"
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         name="password"
         value={formData.password}
         onChange={handleChange}
@@ -58,18 +58,14 @@ const LoginForm = () => {
         Forgot Password ?
       </button>
 
-      <button
-        type="submit"
-        className="btn btn-primary w-full"
-        disabled={loading}
-      >
+      <button type="submit" className="btn btn-primary w-full" disabled={loading}>
         {loading ? (
           <>
             <Loader2 className="h-5 w-5 animate-spin" />
             Loading...
           </>
         ) : (
-          "Sign in"
+          'Sign in'
         )}
       </button>
     </form>

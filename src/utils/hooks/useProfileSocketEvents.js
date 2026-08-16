@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const useProfileSocketEvents = (
   socket,
@@ -45,17 +45,17 @@ export const useProfileSocketEvents = (
       setConnectionData(data.connectionData);
     };
 
-    socket?.on("followRequest", handleRevConnectionShow);
-    socket?.on("requestCancel", handleRevConnectionHide);
-    socket?.on("requestAccepted", handleRequestAcceptUpdateData);
-    socket?.on("unfollowConnection", handleUnfollowConnectionUpdateData);
-    socket?.on("requestReject", handleRequestRejectUpdateData);
+    socket?.on('followRequest', handleRevConnectionShow);
+    socket?.on('requestCancel', handleRevConnectionHide);
+    socket?.on('requestAccepted', handleRequestAcceptUpdateData);
+    socket?.on('unfollowConnection', handleUnfollowConnectionUpdateData);
+    socket?.on('requestReject', handleRequestRejectUpdateData);
     return () => {
-      socket?.off("followRequest", handleRevConnectionShow);
-      socket?.off("requestCancel", handleRevConnectionHide);
-      socket?.off("requestAccepted", handleRequestAcceptUpdateData);
-      socket?.off("unfollowConnection", handleUnfollowConnectionUpdateData);
-      socket?.off("requestReject", handleRequestRejectUpdateData);
+      socket?.off('followRequest', handleRevConnectionShow);
+      socket?.off('requestCancel', handleRevConnectionHide);
+      socket?.off('requestAccepted', handleRequestAcceptUpdateData);
+      socket?.off('unfollowConnection', handleUnfollowConnectionUpdateData);
+      socket?.off('requestReject', handleRequestRejectUpdateData);
     };
   }, [socket, setRevConnection, userData, setConnectionData, setUserData]);
 };

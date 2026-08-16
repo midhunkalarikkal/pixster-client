@@ -1,8 +1,8 @@
-import { ai } from "./gemini";
-import { toast } from "react-toastify";
-import { validateCaption } from "./validator";
-import { formatTimeForClock } from "./helpers";
-import { GEMINI_QUERY_END, GEMINI_QUERY_INITAL } from "./constants";
+import { ai } from './gemini';
+import { toast } from 'react-toastify';
+import { validateCaption } from './validator';
+import { formatTimeForClock } from './helpers';
+import { GEMINI_QUERY_END, GEMINI_QUERY_INITAL } from './constants';
 
 export const handlePostSubmit = async (
   event,
@@ -27,7 +27,7 @@ export const handlePostSubmit = async (
 
   if (isPost) {
     if (!postForUpdating && !image) {
-      toast.info("Please select an image.");
+      toast.info('Please select an image.');
       return;
     }
   }
@@ -35,11 +35,11 @@ export const handlePostSubmit = async (
   setUploading(true);
 
   const formData = new FormData();
-  formData.append("caption", caption);
-  formData.append("type", isPost ? "Post" : "Thread");
+  formData.append('caption', caption);
+  formData.append('type', isPost ? 'Post' : 'Thread');
 
   if (isPost && image) {
-    formData.append("postImage", image);
+    formData.append('postImage', image);
   }
 
   try {
@@ -52,16 +52,16 @@ export const handlePostSubmit = async (
 
     if (response?.data?.success) {
       toast.success(response.data.message);
-      setCaption("");
+      setCaption('');
       setImage(null);
-      setImagePreview("");
+      setImagePreview('');
       setCaptionError(null);
       setPostForUpdating(null);
     } else {
-      toast.error("Something went wrong. Please try again.");
+      toast.error('Something went wrong. Please try again.');
     }
   } catch {
-    toast.error("Failed to submit post.");
+    toast.error('Failed to submit post.');
   } finally {
     setUploading(false);
   }
@@ -78,7 +78,7 @@ export const handleImageChange = (e, setImagePreview, setImage) => {
   if (!file) return;
 
   if (file.size > 1048576) {
-    toast.info("File size must be less than 1mb.");
+    toast.info('File size must be less than 1mb.');
     return;
   }
 
@@ -100,35 +100,32 @@ export const handleGenerateCaptions = (
   e.preventDefault();
   const query = searchText.current?.value?.trim();
 
-  if (!query) return toast.info("Please tell me your taste of caption");
+  if (!query) return toast.info('Please tell me your taste of caption');
 
-  if (requestCount >= 10) return toast.warning("Daily limit reached (2/2)");
+  if (requestCount >= 10) return toast.warning('Daily limit reached (2/2)');
 
   if (!canGenerate()) {
     const wait = Math.floor((lastRequestTime + 180000 - Date.now()) / 1000);
-    return toast.info(
-      `Please wait ${formatTimeForClock(wait)} before generating again`,
-    );
+    return toast.info(`Please wait ${formatTimeForClock(wait)} before generating again`);
   }
 
-  const geminiQuery =
-    GEMINI_QUERY_INITAL + searchText.current.value + GEMINI_QUERY_END;
+  const geminiQuery = GEMINI_QUERY_INITAL + searchText.current.value + GEMINI_QUERY_END;
 
   toast.promise(
     (async () => {
       try {
         const result = await ai.models.generateContent({
-          model: "gemini-3.6-flash",
+          model: 'gemini-3.6-flash',
           contents: geminiQuery,
         });
 
         const text = result.text;
         if (!text) {
-          throw new Error("Gemini returned an empty response.");
+          throw new Error('Gemini returned an empty response.');
         }
         const cleanText = text
-          .replace(/```json\s*/g, "")
-          .replace(/```\s*/g, "")
+          .replace(/```json\s*/g, '')
+          .replace(/```\s*/g, '')
           .trim();
         const captions = JSON.parse(cleanText);
 
@@ -137,14 +134,14 @@ export const handleGenerateCaptions = (
         setLastRequestTime(Date.now());
         startCooldown();
       } catch (error) {
-        console.log("error : ", error);
-        toast.error("Something went wrong. Try again.");
+        console.log('error : ', error);
+        toast.error('Something went wrong. Try again.');
       }
     })(),
     {
-      pending: "Generating captions...",
-      success: "Captions ready!",
-      error: "Failed to generate.",
+      pending: 'Generating captions...',
+      success: 'Captions ready!',
+      error: 'Failed to generate.',
     },
   );
 };

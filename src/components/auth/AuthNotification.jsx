@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const AuthNotification = ({ floatingRef }) => {
   return (
@@ -49,9 +49,7 @@ const AuthNotification = ({ floatingRef }) => {
         <div>
           <p className="text-sm font-semibold">New interaction</p>
 
-          <p className="text-xs text-base-content/50">
-            Someone liked your post
-          </p>
+          <p className="text-xs text-base-content/50">Someone liked your post</p>
         </div>
       </div>
     </div>

@@ -1,12 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-const UserTab = ({
-  showButton,
-  user,
-  buttonText,
-  onButtonClick,
-  onClickUser,
-}) => {
+const UserTab = ({ showButton, user, buttonText, onButtonClick, onClickUser }) => {
   const { userName, fullName, profilePic, _id } = user;
 
   return (
@@ -18,7 +12,7 @@ const UserTab = ({
     >
       <div className="relative w-2/12">
         <img
-          src={profilePic || "/user_avatar.jpg"}
+          src={profilePic || '/user_avatar.jpg'}
           alt={userName}
           className="size-8 lg:size-10 object-cover rounded-full"
         />

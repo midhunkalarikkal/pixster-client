@@ -1,14 +1,14 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import LoginForm from "../components/forms/LoginForm";
-import { AnimatePresence, motion } from "framer-motion";
-import SignUpForm from "../components/forms/SignUpForm";
-import { useAuthFormStore } from "../store/useAuthFormStore";
-import OtpVerifyForm from "../components/forms/OtpVerifyForm";
-import { formBottomText, formTitle } from "../utils/constants";
-import ResetPasswordForm from "../components/forms/ResetPasswordForm";
-import AuthFloatingElements from "../components/auth/AuthFloatingElements";
-import EmailVerificationForm from "../components/forms/EmailVerificationForm";
+import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
+import LoginForm from '../components/forms/LoginForm';
+import { AnimatePresence, motion } from 'framer-motion';
+import SignUpForm from '../components/forms/SignUpForm';
+import { useAuthFormStore } from '../store/useAuthFormStore';
+import OtpVerifyForm from '../components/forms/OtpVerifyForm';
+import { formBottomText, formTitle } from '../utils/constants';
+import ResetPasswordForm from '../components/forms/ResetPasswordForm';
+import AuthFloatingElements from '../components/auth/AuthFloatingElements';
+import EmailVerificationForm from '../components/forms/EmailVerificationForm';
 
 const AuthPage = () => {
   const pageRef = useRef(null);
@@ -25,22 +25,22 @@ const AuthPage = () => {
   } = useAuthFormStore();
 
   const activeForm = loginForm
-    ? "login"
+    ? 'login'
     : signUpForm
-      ? "signup"
+      ? 'signup'
       : verifyOtpForm
-        ? "otp"
+        ? 'otp'
         : verifyEmailForm
-          ? "email"
+          ? 'email'
           : resetPasswordForm
-            ? "reset"
-            : "";
+            ? 'reset'
+            : '';
 
   useEffect(() => {
     const context = gsap.context(() => {
       const timeline = gsap.timeline({
         defaults: {
-          ease: "power3.out",
+          ease: 'power3.out',
         },
       });
 
@@ -70,7 +70,7 @@ const AuthPage = () => {
             rotateX: 0,
             duration: 0.8,
           },
-          "-=0.15",
+          '-=0.15',
         );
     }, pageRef);
 
@@ -79,19 +79,19 @@ const AuthPage = () => {
 
   const renderForm = () => {
     switch (activeForm) {
-      case "login":
+      case 'login':
         return <LoginForm />;
 
-      case "signup":
+      case 'signup':
         return <SignUpForm />;
 
-      case "email":
+      case 'email':
         return <EmailVerificationForm />;
 
-      case "otp":
+      case 'otp':
         return <OtpVerifyForm />;
 
-      case "reset":
+      case 'reset':
         return <ResetPasswordForm />;
 
       default:
@@ -253,17 +253,17 @@ const AuthPage = () => {
                     initial={{
                       opacity: 0,
                       x: 24,
-                      filter: "blur(4px)",
+                      filter: 'blur(4px)',
                     }}
                     animate={{
                       opacity: 1,
                       x: 0,
-                      filter: "blur(0px)",
+                      filter: 'blur(0px)',
                     }}
                     exit={{
                       opacity: 0,
                       x: -24,
-                      filter: "blur(4px)",
+                      filter: 'blur(4px)',
                     }}
                     transition={{
                       duration: 0.3,

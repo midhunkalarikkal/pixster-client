@@ -1,9 +1,8 @@
-import { useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/useAuthStore";
-import { useSearchStore } from "../store/useSearchStore";
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
+import { useSearchStore } from '../store/useSearchStore';
 
 const AuthUserTab = () => {
-
   const navigate = useNavigate();
   const { authUser } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();
@@ -26,19 +25,15 @@ const AuthUserTab = () => {
         >
           <div className="relative">
             <img
-              src={authUser?.profilePic || "/user_avatar.jpg"}
-              alt={"Profile Image"}
+              src={authUser?.profilePic || '/user_avatar.jpg'}
+              alt={'Profile Image'}
               className="size-10 object-cover rounded-full"
             />
           </div>
           <div>
             <div className="flex flex-col items-start">
-              <p className="font-medium truncate text-sm lg:text-md">
-                {authUser?.fullName}
-              </p>
-              <p className="font-light truncate text-sm lg:text-md">
-                {authUser?.userName}
-              </p>
+              <p className="font-medium truncate text-sm lg:text-md">{authUser?.fullName}</p>
+              <p className="font-light truncate text-sm lg:text-md">{authUser?.userName}</p>
             </div>
           </div>
         </button>

@@ -1,21 +1,18 @@
-import { memo } from "react";
-import PropTypes from "prop-types";
-import { useSearchStore } from "../../store/useSearchStore";
+import { memo } from 'react';
+import PropTypes from 'prop-types';
+import { useSearchStore } from '../../store/useSearchStore';
 
 const ProfileAcceptReject = ({ userId, userName }) => {
-  const {
-    acceptRejectLoading,
-    acceptConnectionRequest,
-    rejectConnectionRequest,
-  } = useSearchStore();
+  const { acceptRejectLoading, acceptConnectionRequest, rejectConnectionRequest } =
+    useSearchStore();
 
   const handleRequest = (id, e, accept) => {
     e.preventDefault();
     e.stopPropagation();
     if (accept) {
-      acceptConnectionRequest(id, "accepted");
+      acceptConnectionRequest(id, 'accepted');
     } else {
-      rejectConnectionRequest(id, "rejected");
+      rejectConnectionRequest(id, 'rejected');
     }
   };
 
@@ -53,5 +50,5 @@ ProfileAcceptReject.propTypes = {
   userName: PropTypes.string.isRequired,
 };
 
-ProfileAcceptReject.displayName = "ProfileAcceptReject";
+ProfileAcceptReject.displayName = 'ProfileAcceptReject';
 export default memo(ProfileAcceptReject);

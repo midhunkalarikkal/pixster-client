@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import { formatDistanceToNow } from "date-fns";
-import { Ellipsis, Heart } from "lucide-react";
+import PropTypes from 'prop-types';
+import { formatDistanceToNow } from 'date-fns';
+import { Ellipsis, Heart } from 'lucide-react';
 
 const Comment = ({
   onLikeOrDislike,
@@ -24,7 +24,7 @@ const Comment = ({
     <div className="flex rounded-lg hover:bg-base-200 transition items-start gap-3 p-2 lg:p-3">
       <div className="pt-1 shrink-0">
         <img
-          src={profilePic || "/user_avatar.jpg"}
+          src={profilePic || '/user_avatar.jpg'}
           alt="User Avatar"
           className="size-8 lg:size-12 rounded-full"
         />
@@ -32,15 +32,15 @@ const Comment = ({
 
       <div className="flex flex-col w-full space-y-1 items-start">
         <p className="font-medium text-sm">
-          {userName}{" "}
+          {userName}{' '}
           <span className="text-neutral-500 ml-2">
             {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
-          </span>{" "}
+          </span>{' '}
         </p>
         <p className="text-sm">{content}</p>
 
         <button
-          className={`text-neutral-500 text-xs font-semibold ${!showReplyButton && "hidden"}`}
+          className={`text-neutral-500 text-xs font-semibold ${!showReplyButton && 'hidden'}`}
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -73,9 +73,7 @@ const Comment = ({
             onLikeOrDislike();
           }}
         >
-          <Heart
-            className={`h-4 w-4 ${liked && "fill-red-500 text-red-500"}`}
-          />
+          <Heart className={`h-4 w-4 ${liked && 'fill-red-500 text-red-500'}`} />
         </button>
         <span className="text-xs text-neutral-500">{likes}</span>
         {userId === authUserId && (

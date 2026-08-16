@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
-import AuthFloatingPost from "./AuthFloatingPost";
-import AuthNotification from "./AuthNotification";
-import AuthPeopleCard from "./AuthPeopleCard";
-import AuthShareCard from "./AuthShareCard";
+import AuthFloatingPost from './AuthFloatingPost';
+import AuthNotification from './AuthNotification';
+import AuthPeopleCard from './AuthPeopleCard';
+import AuthShareCard from './AuthShareCard';
 
 const AuthFloatingElements = () => {
   const floatingRefs = useRef([]);
@@ -34,7 +34,7 @@ const AuthFloatingElements = () => {
           y: 0,
           duration: 0.7,
           delay: index * 0.12,
-          ease: "power3.out",
+          ease: 'power3.out',
         },
       );
 
@@ -47,14 +47,14 @@ const AuthFloatingElements = () => {
         duration: 3 + index * 0.4,
         repeat: -1,
         yoyo: true,
-        ease: "sine.inOut",
+        ease: 'sine.inOut',
         delay: 0.8 + index * 0.15,
       });
 
       animations.push(floating);
     });
 
-    gsap.to(".pixster-auth-orb", {
+    gsap.to('.pixster-auth-orb', {
       x: 30,
       y: -20,
       scale: 1.08,
@@ -62,13 +62,13 @@ const AuthFloatingElements = () => {
       repeat: -1,
       yoyo: true,
       stagger: 0.5,
-      ease: "sine.inOut",
+      ease: 'sine.inOut',
     });
 
     return () => {
       animations.forEach((animation) => animation.kill());
 
-      gsap.killTweensOf(".pixster-auth-orb");
+      gsap.killTweensOf('.pixster-auth-orb');
     };
   }, []);
 

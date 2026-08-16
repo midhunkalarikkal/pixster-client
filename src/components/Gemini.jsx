@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import { toast } from "react-toastify";
-import { CopyIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { formatTimeForClock } from "../utils/helpers";
-import { useGeminiStore } from "../store/useGeminiStore";
-import GeminiButton from "../components/Buttons/GeminiButton";
-import { handleGenerateCaptions } from "../utils/createPageMethods";
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { CopyIcon } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { formatTimeForClock } from '../utils/helpers';
+import { useGeminiStore } from '../store/useGeminiStore';
+import GeminiButton from '../components/Buttons/GeminiButton';
+import { handleGenerateCaptions } from '../utils/createPageMethods';
 
 const Gemini = ({ isPost }) => {
   const searchText = useRef(null);
@@ -25,17 +25,15 @@ const Gemini = ({ isPost }) => {
 
   useEffect(() => {
     const today = new Date().toLocaleDateString();
-    const lastReset = localStorage.getItem("lastRequestReset");
+    const lastReset = localStorage.getItem('lastRequestReset');
 
     if (lastReset !== today) {
       resetRequestCount();
-      localStorage.setItem("lastRequestReset", today);
+      localStorage.setItem('lastRequestReset', today);
     }
 
     if (lastRequestTime) {
-      const remaining = Math.floor(
-        (lastRequestTime + 180000 - Date.now()) / 1000,
-      );
+      const remaining = Math.floor((lastRequestTime + 180000 - Date.now()) / 1000);
       if (remaining > 0) startCooldown(remaining);
     }
 
@@ -57,7 +55,7 @@ const Gemini = ({ isPost }) => {
   };
 
   return (
-    <div className={`pb-20 ${!isPost && "hidden"}`}>
+    <div className={`pb-20 ${!isPost && 'hidden'}`}>
       <h2 className="text-lg md:text-xl font-semibold mt-10">
         Ask Gemini for stunning captions for your post
       </h2>
@@ -82,7 +80,7 @@ const Gemini = ({ isPost }) => {
           className={`textarea textarea-bordered w-full`}
           placeholder="Tell me the theme of your post"
         />
-        <GeminiButton text={"Generate"} />
+        <GeminiButton text={'Generate'} />
       </form>
       {cooldownRemaining > 0 && (
         <div className="mt-4">
@@ -91,11 +89,7 @@ const Gemini = ({ isPost }) => {
         </div>
       )}
 
-      <div
-        className={`w-full mt-4 space-y-2 ${
-          !geminiCaptions?.length && "hidden"
-        }`}
-      >
+      <div className={`w-full mt-4 space-y-2 ${!geminiCaptions?.length && 'hidden'}`}>
         <h2 className="text-lg ms:text-xl font-semibold mt-4">
           Here is the AI captions generated for you
         </h2>
@@ -108,7 +102,7 @@ const Gemini = ({ isPost }) => {
                   e.preventDefault();
                   e.stopPropagation();
                   navigator.clipboard.writeText(caption);
-                  toast.success("Caption copied to clipboard");
+                  toast.success('Caption copied to clipboard');
                 }}
                 className="cursor-pointer flex items-center group"
               >

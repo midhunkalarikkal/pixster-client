@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { toast } from "react-toastify";
-import { axiosInstance } from "../lib/axios";
-import { useAuthStore } from "./useAuthStore";
+import { create } from 'zustand';
+import { toast } from 'react-toastify';
+import { axiosInstance } from '../lib/axios';
+import { useAuthStore } from './useAuthStore';
 
 export const useProfileStore = create((set) => ({
   tab: 0,
@@ -37,8 +37,7 @@ export const useProfileStore = create((set) => ({
 
   setRequestedProfiles: (profiles) => set({ requestedProfiles: profiles }),
 
-  setIncomingRequestedProfiles: (profiles) =>
-    set({ incomingrequestedProfiles: profiles }),
+  setIncomingRequestedProfiles: (profiles) => set({ incomingrequestedProfiles: profiles }),
 
   setAccountTypeChangedTime: (data) => set({ accountTypeChangedTime: data }),
 
@@ -57,7 +56,7 @@ export const useProfileStore = create((set) => ({
 
   getUserSavedPosts: async () => {
     try {
-      const res = await axiosInstance.get("/user/getUserSavedPosts");
+      const res = await axiosInstance.get('/user/getUserSavedPosts');
       return res.data.userSavedPosts;
     } catch (error) {
       toast.error(error.response.data.message);
@@ -67,7 +66,7 @@ export const useProfileStore = create((set) => ({
   getRequestedProfiles: async () => {
     set({ requestedProfilesLoading: true });
     try {
-      const res = await axiosInstance.get("/user/fetchRequestedProfiles");
+      const res = await axiosInstance.get('/user/fetchRequestedProfiles');
       set({ requestedProfiles: res.data.users });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -79,9 +78,7 @@ export const useProfileStore = create((set) => ({
   getIncomingRequestedProfiles: async () => {
     set({ incomingrequestedProfilesLoading: true });
     try {
-      const res = await axiosInstance.get(
-        "/user/fetchIncomingRequestedProfiles",
-      );
+      const res = await axiosInstance.get('/user/fetchIncomingRequestedProfiles');
       set({ incomingrequestedProfiles: res.data.users });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -93,9 +90,7 @@ export const useProfileStore = create((set) => ({
   getFollowingsProfiles: async (userId) => {
     set({ followingProfilesLoading: true });
     try {
-      const res = await axiosInstance.get(
-        `/user/fetchFollowingProfiles/${userId}`,
-      );
+      const res = await axiosInstance.get(`/user/fetchFollowingProfiles/${userId}`);
       set({ followingProfiles: res.data.users });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -107,9 +102,7 @@ export const useProfileStore = create((set) => ({
   getFollowersProfiles: async (userId) => {
     set({ followersProfilesLoading: true });
     try {
-      const res = await axiosInstance.get(
-        `/user/fetchFollowersProfiles/${userId}`,
-      );
+      const res = await axiosInstance.get(`/user/fetchFollowersProfiles/${userId}`);
       set({ followersProfiles: res.data.users });
     } catch (error) {
       toast.error(error.response.data.message);
@@ -121,7 +114,7 @@ export const useProfileStore = create((set) => ({
   uploadPost: async (data) => {
     set({ postUploading: true });
     try {
-      const res = await axiosInstance.post("/post/uploadPost", data);
+      const res = await axiosInstance.post('/post/uploadPost', data);
       return res;
     } catch (error) {
       toast.error(error.response.data.message);
@@ -155,9 +148,7 @@ export const useProfileStore = create((set) => ({
 
   getUserThreads: async (data) => {
     try {
-      const res = await axiosInstance.get(
-        `/user/getUserThreads/${data.userId}`,
-      );
+      const res = await axiosInstance.get(`/user/getUserThreads/${data.userId}`);
       return res.data.userThreads;
     } catch (error) {
       toast.error(error.response.data.message);
@@ -167,7 +158,7 @@ export const useProfileStore = create((set) => ({
   updateAbout: async (data) => {
     const { changeAbout } = useAuthStore.getState();
     try {
-      const res = await axiosInstance.put("/user/updateAbout", data);
+      const res = await axiosInstance.put('/user/updateAbout', data);
       changeAbout(res.data.about);
       return res.data;
     } catch (error) {
@@ -177,7 +168,7 @@ export const useProfileStore = create((set) => ({
 
   changeAccountType: async () => {
     try {
-      const res = await axiosInstance.put("/user/changeAccountType");
+      const res = await axiosInstance.put('/user/changeAccountType');
       return res.data;
     } catch (error) {
       toast.error(error.response.data.message);

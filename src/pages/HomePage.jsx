@@ -1,24 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
-import Stories from "../components/story/Stories";
-import HomeInfo from "../components/home/HomeInfo.jsx";
-import { usePostStore } from "../store/usePostStore.js";
-import { useHomeStore } from "../store/useHomeStore.js";
-import Suggestions from "../components/sidebars/Suggestions";
-import StoryUploader from "../components/story/StoryUploader";
-import FeedSkeleton from "../components/skeletons/FeedSkeleton";
-import HomePostsScroller from "../components/home/HomePostsScroller.jsx";
-import CommentContainer from "../components/comment/CommentContainer.jsx";
-import HorizontalScrollingSuggestion from "../components/home/HorizontalScrollingSuggestion.jsx";
+import { useCallback, useEffect, useState } from 'react';
+import Stories from '../components/story/Stories';
+import HomeInfo from '../components/home/HomeInfo.jsx';
+import { usePostStore } from '../store/usePostStore.js';
+import { useHomeStore } from '../store/useHomeStore.js';
+import Suggestions from '../components/sidebars/Suggestions';
+import StoryUploader from '../components/story/StoryUploader';
+import FeedSkeleton from '../components/skeletons/FeedSkeleton';
+import HomePostsScroller from '../components/home/HomePostsScroller.jsx';
+import CommentContainer from '../components/comment/CommentContainer.jsx';
+import HorizontalScrollingSuggestion from '../components/home/HorizontalScrollingSuggestion.jsx';
 
 const HomePage = () => {
   const [homePostsData, setHomePostsData] = useState([]);
 
   const { commentUploaderOpen } = usePostStore();
-  const {
-    storyUploaderOpen,
-    getHomePostScrollerData,
-    homeScrollerDataLoading,
-  } = useHomeStore();
+  const { storyUploaderOpen, getHomePostScrollerData, homeScrollerDataLoading } = useHomeStore();
 
   const fetchPostsData = useCallback(async () => {
     const posts = await getHomePostScrollerData();
@@ -52,10 +48,7 @@ const HomePage = () => {
               <HorizontalScrollingSuggestion />
 
               {homePostsData.slice(1).map((post) => (
-                <HomePostsScroller
-                  key={post?.userPostDetails?._id}
-                  post={post}
-                />
+                <HomePostsScroller key={post?.userPostDetails?._id} post={post} />
               ))}
             </>
           ) : (
