@@ -3,6 +3,7 @@ import { useAuthStore } from "../store/useAuthStore";
 import { useSearchStore } from "../store/useSearchStore";
 
 const AuthUserTab = () => {
+
   const navigate = useNavigate();
   const { authUser } = useAuthStore();
   const { getSearchSelectedUser } = useSearchStore();

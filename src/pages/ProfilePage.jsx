@@ -10,13 +10,10 @@ import ProfileSecondData from "../components/profile/ProfileSecondData.jsx";
 import ProfileAcceptReject from "../components/profile/ProfileAcceptReject.jsx";
 import ProfileHeadDropdown from "../components/profile/ProfileHeadDropdown.jsx";
 import { useProfileSocketEvents } from "../utils/hooks/useProfileSocketEvents.js";
-import {
-  handlePostDelete,
-  handleRemoveFollowerProfile,
-  handleRemoveFollowingPrfoile,
-} from "../utils/profilePageMethods.js";
+import { handlePostDelete, handleRemoveFollowerProfile, handleRemoveFollowingPrfoile } from "../utils/profilePageMethods.js";
 
 const ProfilePage = () => {
+
   const [userData, setUserData] = useState(null);
   const [connectionData, setConnectionData] = useState(null);
   const [revConnectionData, setRevConnectionData] = useState(null);

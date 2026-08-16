@@ -52,7 +52,7 @@ const ThreadGrid = ({ threads, authUserId, userDataId, onDelete }) => {
               </div>
             ) : (
               <>
-                <div className="flex justify-center items-center w-auto min-h-36 md:min-h-36 lg:min-h-36 transition-opacity duration-300 group-hover:opacity-70 border-[1px] border-base-300 rounded-md p-2 md:p-0">
+                <div className="flex justify-center items-center w-auto min-h-36 md:min-h-36 lg:min-h-36 transition-opacity duration-300 group-hover:opacity-70 border-[1px] border-base-300 rounded-md p-2">
                   <p>{thread.content}</p>
                 </div>
 
